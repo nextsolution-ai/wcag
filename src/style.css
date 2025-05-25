@@ -8,7 +8,7 @@ body { background: #ffeedd !important; }
 }
 
 #accessibility-btn {
-  background: #0033cc;
+  background: var(--wcag-primary-color);
   border: none;
   border-radius: 50%;
   width: 56px;
@@ -26,7 +26,6 @@ body { background: #ffeedd !important; }
 #accessibility-btn svg {
   width: 32px;
   height: 32px;
-  fill: #ffffff;
 }
 
 #accessibility-btn:hover {
@@ -35,7 +34,7 @@ body { background: #ffeedd !important; }
 
 #accessibility-btn:focus {
   outline: 2px solid #fff;
-  box-shadow: 0 0 0 4px #0033cc;
+  box-shadow: 0 0 0 4px var(--wcag-primary-color);
 }
 
 #accessibility-panel {
@@ -360,7 +359,7 @@ body.high-contrast * {
 }
 
 .settings-card select:focus {
-  border: 1.5px solid #0033cc;
+  border: 1.5px solid var(--wcag-primary-color);
 }
 
 .profiles-grid,
