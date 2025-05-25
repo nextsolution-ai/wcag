@@ -1,0 +1,58 @@
+.profiles-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr 1fr;
+  max-height: 725px;
+  overflow: hidden;
+  padding-top: 20px;
+  transition: all .5s ease;
+}
+
+.profile-btn {
+  background: #fff;
+  border: 1px solid #d7d7e3;
+  border-radius: 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: PlusJakartaSans,Verdana,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  height: auto;
+  opacity: 1;
+  padding: 16px;
+  position: relative;
+  text-transform: none;
+  transition: all .2s;
+  white-space: pre-wrap;
+  width: 100%;
+  cursor: pointer;
+  align-items: center;
+  text-align: center;
+}
+
+.profile-btn:hover {
+  border-color: var(--wcag-primary-color);
+  background: #f5f6fa;
+}
+
+.profile-btn span {
+  margin-top: 8px;
+}
+
+.profile-btn svg {
+  width: 24px;
+  height: 24px;
+}
+
+.dacctltp {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: help;
+}
+
+.dacctltp svg {
+  width: 16px;
+  height: 16px;
+} 

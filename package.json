@@ -1,0 +1,22 @@
+{
+  "name": "wcag-accessibility-widget",
+  "version": "1.0.0",
+  "description": "A customizable accessibility widget that helps websites comply with WCAG guidelines",
+  "main": "dist/widget.min.js",
+  "scripts": {
+    "build": "mkdir -p dist && uglifyjs widget.js -o dist/widget.min.js && cleancss -o dist/style.min.css style.css profiles.css"
+  },
+  "keywords": [
+    "accessibility",
+    "wcag",
+    "a11y",
+    "widget",
+    "web-accessibility"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "uglify-js": "^3.17.4"
+  }
+} 
