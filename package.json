@@ -4,7 +4,7 @@
   "description": "A customizable accessibility widget that helps websites comply with WCAG guidelines",
   "main": "dist/widget.min.js",
   "scripts": {
-    "build": "mkdir -p dist && uglifyjs widget.js -o dist/widget.min.js && cleancss -o dist/style.min.css style.css profiles.css"
+    "build": "npx uglifyjs src/widget.js -o dist/widget.min.js && npx cleancss -o dist/style.min.css src/style.css src/profiles.css"
   },
   "keywords": [
     "accessibility",
