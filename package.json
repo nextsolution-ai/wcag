@@ -1,22 +1,23 @@
 {
   "name": "wcag-accessibility-widget",
   "version": "1.0.0",
-  "description": "A customizable accessibility widget that helps websites comply with WCAG guidelines",
+  "description": "A customizable accessibility widget that helps make websites WCAG compliant",
   "main": "dist/widget.min.js",
   "scripts": {
-    "build": "npx uglifyjs src/widget.js -o dist/widget.min.js && npx cleancss -o dist/style.min.css src/style.css src/profiles.css"
+    "build:css": "cleancss -o dist/style.min.css src/style.css && cleancss -o dist/profiles.min.css src/profiles.css",
+    "build:js": "uglifyjs src/widget.js -o dist/widget.min.js",
+    "build": "npm run build:css && npm run build:js"
   },
   "keywords": [
     "accessibility",
     "wcag",
-    "a11y",
     "widget",
-    "web-accessibility"
+    "a11y"
   ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
     "clean-css-cli": "^5.6.2",
-    "uglify-js": "^3.17.4"
+    "uglify-js": "^3.19.3"
   }
-} 
+}

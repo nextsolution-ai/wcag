@@ -1,58 +1,88 @@
 # WCAG Accessibility Widget
 
-A lightweight, customizable accessibility widget that helps websites comply with WCAG guidelines. This widget provides various accessibility features including:
+A customizable accessibility widget that helps make websites WCAG compliant. This widget provides various accessibility features including:
 
-- Font size adjustment
-- Color contrast options
-- Text spacing controls
-- Line height adjustment
-- And more...
+- Motor impairment support
+- Blindness/Screen reader optimization
+- Color blindness adjustments
+- Dyslexia-friendly mode
+- Low vision support
+- Epilepsy safe mode
+- ADHD friendly mode
+- Cognitive disability support
 
-## Quick Installation
+## Quick Start
 
-Add the following code snippet just before the closing `</body>` tag of your website:
-
-```html
-<link rel="stylesheet" href="https://raw.githubusercontent.com/YOUR_USERNAME/wcag-widget/main/dist/style.min.css">
-<script src="https://raw.githubusercontent.com/YOUR_USERNAME/wcag-widget/main/dist/widget.min.js"></script>
-```
-
-## Manual Installation
-
-1. Download the files from this repository
-2. Copy the `dist` folder to your project
-3. Include the CSS and JS files in your HTML:
-```html
-<link rel="stylesheet" href="path/to/style.min.css">
-<script src="path/to/widget.min.js"></script>
-```
-
-## Features
-
-- 🎨 Customizable appearance
-- 🌐 Works with any website
-- 🔒 No dependencies
-- 📱 Mobile-friendly
-- ♿ WCAG 2.1 compliant
-
-## Configuration
-
-You can customize the widget by adding a configuration object before loading the script:
+Add the widget to your website by including these lines in your HTML:
 
 ```html
 <script>
   window.WCAGWidgetConfig = {
-    position: 'right', // 'left' or 'right'
-    theme: 'light',    // 'light' or 'dark'
-    // Add more configuration options as needed
+    position: 'right', // 'right' or 'left'
+    theme: 'light'    // 'light' or 'dark'
   };
 </script>
+<script src="https://nextsolution-ai.github.io/wcag/dist/widget.min.js"></script>
 ```
 
-## Contributing
+## Features
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+### Accessibility Profiles
+- Motor Impairments: Disables animations and increases clickable areas
+- Blindness: Optimizes for screen readers
+- Color Blindness: Adjusts color contrast and saturation
+- Dyslexia: Changes font and increases readability
+- Low Vision: Increases font size and cursor size
+- Epilepsy: Reduces animations and flashing elements
+- ADHD: Reduces distractions and improves focus
+- Cognitive Disabilities: Simplifies content and improves readability
+
+### Content Adjustments
+- Font size adjustment
+- Line height control
+- Letter spacing control
+- Text-to-speech functionality
+- Link underlining
+
+### Color Adjustments
+- Color inversion
+- Contrast adjustment
+- Saturation control
+
+### Visibility Settings
+- Animation control
+- Cursor size adjustment
+- Image hiding
+- Reading guide
+
+## Configuration
+
+You can configure the widget by setting `window.WCAGWidgetConfig` before loading the script:
+
+```javascript
+window.WCAGWidgetConfig = {
+  position: 'right', // Widget position: 'right' or 'left'
+  theme: 'light'    // Widget theme: 'light' or 'dark'
+};
+```
+
+## Development
+
+1. Clone the repository:
+```bash
+git clone https://github.com/nextsolution-ai/wcag.git
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Build the minified files:
+```bash
+npm run build
+```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+MIT License - feel free to use this in your projects! 
