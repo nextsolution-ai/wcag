@@ -319,7 +319,7 @@
     });
   }
 
-  // Load styles and initialize widget when DOM is ready
+  // Initialize the widget when the script loads
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       loadStyles();
