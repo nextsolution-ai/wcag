@@ -1,46 +1,118 @@
-const btn = document.getElementById('accessibility-btn');
-const panel = document.getElementById('accessibility-panel');
-const closeBtn = document.getElementById('daccheac');
+// Create and inject the widget HTML structure
+function createAccessibilityWidget() {
+  const widgetHTML = `
+    <div id="accessibility-widget" class="accessibility-widget">
+      <button id="accessibility-btn" class="accessibility-btn" aria-label="Accessibility Options">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20ZM12 6C9.79 6 8 7.79 8 10H10C10 8.9 10.9 8 12 8C13.1 8 14 8.9 14 10C14 12 11 11.75 11 15H13C13 12.75 16 12.5 16 10C16 7.79 14.21 6 12 6ZM11 16H13V18H11V16Z" fill="currentColor"/>
+        </svg>
+      </button>
+      <div id="accessibility-panel" class="accessibility-panel" aria-hidden="true">
+        <div class="panel-header">
+          <h2>Accessibility Options</h2>
+          <button id="daccheac" class="close-btn" aria-label="Close accessibility panel">×</button>
+        </div>
+        <div class="panel-content">
+          <div class="section">
+            <button class="section-toggle" aria-expanded="false">Text Size</button>
+            <div class="section-content" hidden>
+              <button class="option-btn" data-action="decrease-text">A-</button>
+              <button class="option-btn" data-action="reset-text">Reset</button>
+              <button class="option-btn" data-action="increase-text">A+</button>
+            </div>
+          </div>
+          <div class="section">
+            <button class="section-toggle" aria-expanded="false">Contrast</button>
+            <div class="section-content" hidden>
+              <button class="option-btn" data-action="high-contrast">High Contrast</button>
+              <button class="option-btn" data-action="normal-contrast">Normal</button>
+            </div>
+          </div>
+          <div class="section">
+            <button class="section-toggle" aria-expanded="false">Text Spacing</button>
+            <div class="section-content" hidden>
+              <button class="option-btn" data-action="increase-spacing">Increase</button>
+              <button class="option-btn" data-action="normal-spacing">Normal</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.insertAdjacentHTML('beforeend', widgetHTML);
+}
 
-btn.addEventListener('click', () => {
-  const isOpen = panel.classList.toggle('open');
-  panel.setAttribute('aria-hidden', !isOpen);
-});
+// Initialize the widget when the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  // Create the widget
+  createAccessibilityWidget();
 
-closeBtn.addEventListener('click', () => {
-  panel.classList.remove('open');
-  panel.setAttribute('aria-hidden', 'true');
-});
-
-// Section toggle logic
-document.querySelectorAll('.section-toggle').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const content = this.nextElementSibling;
-    const expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', !expanded);
-    content.hidden = expanded;
-  });
-});
-
-// Position select logic
-document.getElementById('position-select').addEventListener('change', function() {
+  // Get references to elements
+  const btn = document.getElementById('accessibility-btn');
+  const panel = document.getElementById('accessibility-panel');
+  const closeBtn = document.getElementById('daccheac');
   const widget = document.getElementById('accessibility-widget');
-  if (this.value === 'left') {
+
+  // Apply initial position from config
+  if (window.WCAGWidgetConfig && window.WCAGWidgetConfig.position === 'left') {
     widget.style.right = '';
     widget.style.left = '32px';
   } else {
     widget.style.left = '';
     widget.style.right = '32px';
   }
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.accordion-toggle').forEach(btn => {
+  // Toggle panel
+  btn.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    panel.setAttribute('aria-hidden', !isOpen);
+  });
+
+  // Close panel
+  closeBtn.addEventListener('click', () => {
+    panel.classList.remove('open');
+    panel.setAttribute('aria-hidden', 'true');
+  });
+
+  // Section toggle logic
+  document.querySelectorAll('.section-toggle').forEach(btn => {
     btn.addEventListener('click', function() {
       const content = this.nextElementSibling;
       const expanded = this.getAttribute('aria-expanded') === 'true';
       this.setAttribute('aria-expanded', !expanded);
       content.hidden = expanded;
+    });
+  });
+
+  // Accessibility actions
+  document.querySelectorAll('[data-action]').forEach(button => {
+    button.addEventListener('click', function() {
+      const action = this.dataset.action;
+      switch(action) {
+        case 'increase-text':
+          document.body.style.fontSize = 'larger';
+          break;
+        case 'decrease-text':
+          document.body.style.fontSize = 'smaller';
+          break;
+        case 'reset-text':
+          document.body.style.fontSize = '';
+          break;
+        case 'high-contrast':
+          document.body.classList.add('high-contrast');
+          break;
+        case 'normal-contrast':
+          document.body.classList.remove('high-contrast');
+          break;
+        case 'increase-spacing':
+          document.body.style.letterSpacing = '1px';
+          document.body.style.wordSpacing = '3px';
+          break;
+        case 'normal-spacing':
+          document.body.style.letterSpacing = '';
+          document.body.style.wordSpacing = '';
+          break;
+      }
     });
   });
 });
