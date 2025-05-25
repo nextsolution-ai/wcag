@@ -42,16 +42,23 @@ function createAccessibilityWidget() {
   document.body.insertAdjacentHTML('beforeend', widgetHTML);
 }
 
-// Initialize the widget when the DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  // Create the widget
-  createAccessibilityWidget();
+// Initialize widget functionality
+function initializeWidget() {
+  // Create the widget if it doesn't exist
+  if (!document.getElementById('accessibility-widget')) {
+    createAccessibilityWidget();
+  }
 
   // Get references to elements
   const btn = document.getElementById('accessibility-btn');
   const panel = document.getElementById('accessibility-panel');
   const closeBtn = document.getElementById('daccheac');
   const widget = document.getElementById('accessibility-widget');
+
+  if (!btn || !panel || !closeBtn || !widget) {
+    console.error('WCAG Widget: Required elements not found');
+    return;
+  }
 
   // Apply initial position from config
   if (window.WCAGWidgetConfig && window.WCAGWidgetConfig.position === 'left') {
@@ -115,4 +122,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-});
+}
+
+// Initialize immediately if document is already loaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeWidget);
+} else {
+  initializeWidget();
+}
