@@ -2,6 +2,10 @@
 
 A lightweight, customizable accessibility widget that can be easily added to any website. This widget provides various accessibility features to make your website more accessible to users with different needs.
 
+## Demo
+
+Check out the live demo at [https://nextsolution-ai.github.io/wcag/](https://nextsolution-ai.github.io/wcag/)
+
 ## Features
 
 - Easy to deploy
@@ -10,20 +14,20 @@ A lightweight, customizable accessibility widget that can be easily added to any
 - Customizable styles
 - Responsive layout
 - WCAG compliant
+- Multiple accessibility profiles:
+  - Motor impairments
+  - Blindness
+  - Color blindness
+  - Dyslexia
+  - Low vision
+  - Epilepsy
 
 ## Installation
 
-1. Download the `widget-deploy.js` file
-2. Add the script to your HTML file before the closing `</body>` tag:
+Add the following script to your HTML file before the closing `</body>` tag:
 
 ```html
-<script src="path/to/widget-deploy.js"></script>
-```
-
-Or use it directly via CDN (replace VERSION with the latest version):
-
-```html
-<script src="https://cdn.jsdelivr.net/gh/your-repo/accessibility-widget@VERSION/widget-deploy.js"></script>
+<script src="https://nextsolution-ai.github.io/wcag/widget-deploy.min.js"></script>
 ```
 
 ## Customization
