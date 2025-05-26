@@ -141,6 +141,10 @@
 
     // Create and inject styles
     const styles = `
+    :root {
+      --wcag-primary-color: #0033cc;
+    }
+
     #accessibility-widget {
       position: fixed;
       bottom: 32px;
@@ -149,7 +153,7 @@
     }
 
     #accessibility-btn {
-      background: #0033cc;
+      background: var(--wcag-primary-color);
       border: none;
       border-radius: 50%;
       width: 56px;
@@ -164,15 +168,16 @@
 
     #accessibility-btn:focus {
       outline: 2px solid #fff;
-      box-shadow: 0 0 0 4px #0033cc;
+      box-shadow: 0 0 0 4px var(--wcag-primary-color);
     }
 
-    .accessibility-panel {
+    #accessibility-panel {
       display: flex;
       flex-direction: column;
       position: fixed;
       top: 0;
       right: -560px;
+      left: auto;
       width: 560px;
       height: 100vh;
       background: #000243;
@@ -185,104 +190,165 @@
       letter-spacing: 0;
       line-height: 1;
       z-index: 10000;
-      padding: 0;
+      padding: 0 24px 24px 24px;
       box-sizing: border-box;
-      transition: right 0.3s ease;
+      transition: left 0.2s ease, right 0.2s ease;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
-    .accessibility-panel.open {
+    #accessibility-panel * {
+      font-family: 'Plus Jakarta Sans', Verdana, sans-serif;
+      font-size: 14px;
+      font-weight: 600 !important;
+    }
+
+    #accessibility-panel.open {
       right: 0;
+      left: auto;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 12px;
+      box-sizing: border-box;
+      color: #000;
+      margin-bottom: 20px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
     .accessibility-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 16px 24px;
       background: #000243;
-      border-radius: 24px 0 0 0;
+      border-radius: 24px 24px 0 0;
+      padding: 16px 24px 16px 16px;
+      margin: 0 -24px;
       min-height: 72px;
+      height: 82px;
       position: sticky;
       top: 0;
-      z-index: 1;
-    }
-
-    .accessibility-header-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
+      z-index: 10;
+      width: calc(100% + 48px);
+      box-sizing: border-box;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      flex-shrink: 0;
     }
 
     .accessibility-header-icon {
-      background: #fff;
-      border-radius: 50%;
-      padding: 8px;
-      width: 32px;
-      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
+      background: var(--wcag-primary-color);
+      border-radius: 25px;
+      -moz-box-sizing: unset;
+      box-sizing: unset;
+      padding: 9px;
+      width: 32px;
+      margin-right: 16px;
+    }
+
+    .accessibility-header-icon svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .accessibility-header-icon svg path {
+      fill: #fff;
     }
 
     .accessibility-header-title {
-      font-size: 16px;
+      flex: 1;
+      font-size: 16px !important;
       font-weight: 600;
       color: #fff;
+      margin-left: 8px;
+      letter-spacing: 0.01em;
     }
 
     .accessibility-close-btn {
       background: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      border: 0;
+      border-radius: 24px;
+      height: 48px;
+      max-height: 48px;
+      max-width: 48px;
+      min-height: 48px;
+      min-width: 48px;
+      padding: 0;
+      transition: background .2s;
+      width: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      transition: background 0.2s;
+      margin-left: 16px;
+      margin-right: 8px;
     }
 
-    .accessibility-close-btn:hover {
-      background: #f0f0f3;
+    .accessibility-close-btn:hover,
+    .accessibility-close-btn:focus {
+      background: #e0e4f7;
     }
 
-    .accessibility-content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 24px;
+    .accessibility-close-btn svg {
+      width: 48px;
+      height: 48px;
     }
 
-    .section {
+    .section.accordion {
       background: #fff;
       border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
+      box-sizing: border-box;
       color: #000;
+      margin-bottom: 20px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
     }
 
     .accordion-toggle {
-      width: 100%;
-      display: flex;
       align-items: center;
-      justify-content: space-between;
       background: #f0f0f3;
-      border: none;
+      border: 0;
       border-radius: 12px;
-      padding: 16px 20px;
+      color: #000;
+      display: flex;
+      flex-direction: row;
+      font-family: 'Plus Jakarta Sans', Verdana, sans-serif;
       font-size: 14px;
       font-weight: 600;
-      color: #000;
+      height: 54px;
+      justify-content: space-between;
+      line-height: 54px;
+      margin: 0;
+      padding-block: 0;
+      padding-inline: 20px;
+      text-transform: none;
+      width: 100%;
       cursor: pointer;
       transition: background 0.2s;
+      box-shadow: none;
     }
 
-    .accordion-toggle:hover {
-      background: #e8e8ec;
+    .accordion-toggle[aria-expanded="true"] {
+      background: #ededf5;
     }
 
     .accordion-content {
-      padding: 20px 0 0;
+      background: #fff;
+      color: #000;
+      border-radius: 0 0 12px 12px;
+      border-top: 1px solid #f0f0f0;
+      padding: 20px 0 0 0;
+      margin: 0;
+      transition: all 0.2s ease;
+      display: none;
+    }
+
+    .accordion-content:not([hidden]) {
+      display: block;
     }
 
     .settings-cards {
@@ -303,56 +369,87 @@
       margin-bottom: 8px;
     }
 
-    select {
+    .settings-card select {
       width: 100%;
-      padding: 8px 12px;
+      padding: 10px 16px;
+      border-radius: 24px;
       border: 1px solid #e0e4f7;
-      border-radius: 8px;
-      font-size: 14px;
+      font-size: 15px;
       background: #fff;
+      color: #222;
+      font-weight: 500;
+      outline: none;
+      transition: border 0.2s;
+    }
+
+    .settings-card select:focus {
+      border: 1.5px solid var(--wcag-primary-color);
     }
 
     .profiles-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 20px;
+      padding: 20px 0;
     }
 
     .profile-btn {
       background: #fff;
-      border: 1px solid #e0e4f7;
+      border: 1px solid #d7d7e3;
       border-radius: 12px;
-      padding: 16px;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 8px;
+      font-family: 'Plus Jakarta Sans', Verdana, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      height: auto;
+      opacity: 1;
+      padding: 16px;
+      position: relative;
+      text-transform: none;
+      transition: all .2s;
+      white-space: pre-wrap;
+      width: 100%;
       cursor: pointer;
-      transition: all 0.2s;
+      align-items: center;
+      text-align: center;
     }
 
     .profile-btn:hover {
+      border-color: var(--wcag-primary-color);
       background: #f5f6fa;
-      border-color: #0033cc;
     }
 
     .profile-btn.active {
       background: #e0e4f7;
-      border-color: #0033cc;
+      border-color: var(--wcag-primary-color);
+    }
+
+    .profile-btn span {
+      margin-top: 8px;
+    }
+
+    .profile-btn svg {
+      width: 24px;
+      height: 24px;
     }
 
     .reset-btn {
-      width: 100%;
-      background: #0033cc;
-      color: #fff;
-      border: none;
-      border-radius: 12px;
-      padding: 16px;
-      font-size: 14px;
-      font-weight: 600;
-      display: flex;
       align-items: center;
+      background: var(--wcag-primary-color);
+      border: 0;
+      border-radius: 50px;
+      color: #fff;
+      display: flex;
+      font-family: 'Plus Jakarta Sans', Verdana, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      min-height: 60px;
+      height: 60px;
+      flex-shrink: 0;
       justify-content: center;
+      width: 100%;
       cursor: pointer;
       margin-top: 16px;
       transition: background 0.2s;
@@ -361,7 +458,15 @@
     .reset-btn:hover {
       background: #002299;
     }
-  `;
+
+    .chevron svg {
+      transition: transform 0.2s ease;
+    }
+
+    .accordion-toggle[aria-expanded="true"] .chevron svg {
+      transform: rotate(180deg);
+    }
+    `;
 
     // Create style element and append to head
     const styleSheet = document.createElement("style");
