@@ -1,87 +1,54 @@
-# WCAG Accessibility Widget
+# Accessibility Widget
 
-A customizable accessibility widget that helps make websites WCAG compliant. This widget provides various accessibility features including:
-
-- Motor impairment support
-- Blindness/Screen reader optimization
-- Color blindness adjustments
-- Dyslexia-friendly mode
-- Low vision support
-- Epilepsy safe mode
-- ADHD friendly mode
-- Cognitive disability support
-
-## Quick Start
-
-Add the widget to your website by including these lines in your HTML:
-
-```html
-<script>
-  window.WCAGWidgetConfig = {
-    position: 'right', // 'right' or 'left'
-    theme: 'light'    // 'light' or 'dark'
-  };
-</script>
-<script src="https://nextsolution-ai.github.io/wcag/dist/widget.min.js"></script>
-```
+A lightweight, customizable accessibility widget that can be easily added to any website. This widget provides various accessibility features to make your website more accessible to users with different needs.
 
 ## Features
 
-### Accessibility Profiles
-- Motor Impairments: Disables animations and increases clickable areas
-- Blindness: Optimizes for screen readers
-- Color Blindness: Adjusts color contrast and saturation
-- Dyslexia: Changes font and increases readability
-- Low Vision: Increases font size and cursor size
-- Epilepsy: Reduces animations and flashing elements
-- ADHD: Reduces distractions and improves focus
-- Cognitive Disabilities: Simplifies content and improves readability
+- Easy to deploy
+- Keyboard shortcut support (CTRL + U)
+- Modern and clean design
+- Customizable styles
+- Responsive layout
+- WCAG compliant
 
-### Content Adjustments
-- Font size adjustment
-- Line height control
-- Letter spacing control
-- Text-to-speech functionality
-- Link underlining
+## Installation
 
-### Color Adjustments
-- Color inversion
-- Contrast adjustment
-- Saturation control
+1. Download the `widget-deploy.js` file
+2. Add the script to your HTML file before the closing `</body>` tag:
 
-### Visibility Settings
-- Animation control
-- Cursor size adjustment
-- Image hiding
-- Reading guide
-
-## Configuration
-
-You can configure the widget by setting `window.WCAGWidgetConfig` before loading the script:
-
-```javascript
-window.WCAGWidgetConfig = {
-  position: 'right', // Widget position: 'right' or 'left'
-  theme: 'light'    // Widget theme: 'light' or 'dark'
-};
+```html
+<script src="path/to/widget-deploy.js"></script>
 ```
 
-## Development
+Or use it directly via CDN (replace VERSION with the latest version):
 
-1. Clone the repository:
-```bash
-git clone https://github.com/nextsolution-ai/wcag.git
+```html
+<script src="https://cdn.jsdelivr.net/gh/your-repo/accessibility-widget@VERSION/widget-deploy.js"></script>
 ```
 
-2. Install dependencies:
-```bash
-npm install
+## Customization
+
+You can customize the widget's appearance by overriding the CSS variables and classes. The main customization points are:
+
+```css
+:root {
+  --wcag-primary-color: #0033cc; /* Primary color for the widget */
+}
 ```
 
-3. Build the minified files:
-```bash
-npm run build
-```
+## Browser Support
+
+The widget supports all modern browsers:
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Opera (latest)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
