@@ -54,15 +54,16 @@
       overflow-x: hidden;
     }
 
-    #accessibility-panel * {
-      font-family: 'Plus Jakarta Sans', Verdana, sans-serif;
-      font-size: 14px;
-      font-weight: 600 !important;
-    }
-
     #accessibility-panel.open {
       right: 0;
       left: auto;
+    }
+
+    #accessibility-panel * {
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', Verdana, sans-serif;
+      font-size: 14px;
+      font-weight: 600 !important;
     }
 
     .section {
@@ -73,6 +74,7 @@
       margin-bottom: 20px;
       padding: 20px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      width: 100%;
     }
 
     .accessibility-header {
@@ -154,6 +156,7 @@
       margin-bottom: 20px;
       padding: 20px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+      overflow: hidden;
     }
 
     .accordion-toggle {
@@ -187,6 +190,7 @@
     .accordion-content {
       display: none;
       padding: 20px 0 0;
+      background: #fff;
     }
 
     .accordion-content:not([hidden]) {
@@ -267,9 +271,14 @@
       text-align: center;
     }
 
-    .profile-btn:hover {
+    .profile-btn:hover,
+    .profile-btn.active {
       border-color: var(--wcag-primary-color);
       background: #f5f6fa;
+    }
+
+    .profile-btn.active {
+      background: #e0e4f7;
     }
 
     .profile-btn span {
@@ -486,9 +495,18 @@
   container.innerHTML = widgetHTML;
   document.body.appendChild(container);
 
+  // Initialize widget state
+  const panel = document.getElementById('accessibility-panel');
+  panel.setAttribute('aria-hidden', 'true');
+
+  // Set initial state for accordions
+  const accordionContents = document.querySelectorAll('.accordion-content');
+  accordionContents.forEach(content => {
+    content.hidden = true;
+  });
+
   // Add event listeners
   const btn = document.getElementById('accessibility-btn');
-  const panel = document.getElementById('accessibility-panel');
   const closeBtn = document.getElementById('daccheac');
   const accordionToggles = document.querySelectorAll('.accordion-toggle');
   const positionSelect = document.getElementById('position-select');
@@ -511,6 +529,15 @@
     toggle.addEventListener('click', () => {
       const content = document.getElementById(toggle.getAttribute('aria-controls'));
       const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      
+      // Close all other accordions
+      accordionToggles.forEach(otherToggle => {
+        if (otherToggle !== toggle) {
+          otherToggle.setAttribute('aria-expanded', 'false');
+          const otherContent = document.getElementById(otherToggle.getAttribute('aria-controls'));
+          otherContent.hidden = true;
+        }
+      });
       
       toggle.setAttribute('aria-expanded', !isExpanded);
       content.hidden = isExpanded;
