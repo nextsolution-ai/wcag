@@ -1,10 +1,6 @@
-# Accessibility Widget
+# WCAG Accessibility Widget
 
-A lightweight, customizable accessibility widget that can be easily added to any website. This widget provides various accessibility features to make your website more accessible to users with different needs.
-
-## Demo
-
-Check out the live demo at [https://nextsolution-ai.github.io/wcag/](https://nextsolution-ai.github.io/wcag/)
+A modern, customizable accessibility widget that helps make websites more accessible to users with different needs. The widget provides various accessibility features and profiles to enhance the user experience.
 
 ## Features
 
@@ -30,30 +26,39 @@ Add the following script to your HTML file before the closing `</body>` tag:
 <script src="https://nextsolution-ai.github.io/wcag/widget-deploy.min.js"></script>
 ```
 
+## Usage
+
+The widget will automatically initialize when the page loads. Users can:
+
+1. Click the accessibility button in the bottom-right corner
+2. Use the keyboard shortcut CTRL + U to open/close the widget
+3. Select different accessibility profiles
+4. Customize widget settings (language and position)
+5. Reset to default settings
+
 ## Customization
 
-You can customize the widget's appearance by overriding the CSS variables and classes. The main customization points are:
+The widget can be customized by modifying the CSS variables in your stylesheet:
 
 ```css
 :root {
-  --wcag-primary-color: #0033cc; /* Primary color for the widget */
+  --wcag-primary-color: #0033cc;
+  --wcag-background-color: #000243;
+  --wcag-text-color: #ffffff;
 }
 ```
 
 ## Browser Support
 
-The widget supports all modern browsers:
-
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
-- Opera (latest)
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-MIT License - feel free to use this in your projects! 
+MIT License - feel free to use this widget in your projects.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. 
