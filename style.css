@@ -47,7 +47,7 @@ body { background: #ffeedd !important; }
   z-index: 10000;
   padding: 0 24px 24px 24px;
   box-sizing: border-box;
-  transition: left 0.2s ease, right 0.2s ease;
+  transition: right 0.3s ease;
   overflow-y: auto;
   overflow-x: hidden;
 }

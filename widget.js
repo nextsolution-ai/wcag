@@ -2,6 +2,10 @@ const btn = document.getElementById('accessibility-btn');
 const panel = document.getElementById('accessibility-panel');
 const closeBtn = document.getElementById('daccheac');
 
+// Initialize panel state
+panel.setAttribute('aria-hidden', 'true');
+
+// Toggle panel
 btn.addEventListener('click', () => {
   const isOpen = panel.classList.toggle('open');
   panel.setAttribute('aria-hidden', !isOpen);
@@ -10,6 +14,21 @@ btn.addEventListener('click', () => {
 closeBtn.addEventListener('click', () => {
   panel.classList.remove('open');
   panel.setAttribute('aria-hidden', 'true');
+});
+
+// Add keyboard shortcut (CTRL + U)
+document.addEventListener('keydown', (e) => {
+  if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+    e.preventDefault();
+    const isOpen = panel.classList.contains('open');
+    if (!isOpen) {
+      panel.classList.add('open');
+      panel.setAttribute('aria-hidden', false);
+    } else {
+      panel.classList.remove('open');
+      panel.setAttribute('aria-hidden', true);
+    }
+  }
 });
 
 // Section toggle logic
