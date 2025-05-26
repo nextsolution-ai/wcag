@@ -40,14 +40,14 @@
               <div class="settings-cards">
                 <div class="settings-card">
                   <div class="settings-label">Language</div>
-                  <select id="language-select">
+                  <select id="language-select" aria-label="Select language">
                     <option value="en">English</option>
                     <option value="es">Spanish</option>
                   </select>
                 </div>
                 <div class="settings-card">
                   <div class="settings-label">Position</div>
-                  <select id="position-select">
+                  <select id="position-select" aria-label="Select widget position">
                     <option value="right">Right</option>
                     <option value="left">Left</option>
                   </select>
@@ -120,7 +120,7 @@
             </div>
           </div>
 
-          <button class="reset-btn">
+          <button class="reset-btn" aria-label="Reset all accessibility settings">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
               <path d="M1 4V10H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M23 20V14H17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
