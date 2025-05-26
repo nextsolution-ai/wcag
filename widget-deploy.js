@@ -120,6 +120,106 @@
             </div>
           </div>
 
+          <div class="section accordion">
+            <button class="accordion-toggle" aria-expanded="false" aria-controls="content-panel">
+              <span>Content</span>
+              <span class="chevron">
+                <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                  <path d="M0.871545 0.666372L0.871472 0.666291L0.865609 0.671861C0.643507 0.882858 0.651372 1.22597 0.849959 1.43501L0.84995 1.43502L0.851904 1.43704L4.60509 5.31438L4.60506 5.3144L4.60851 5.31786C4.6802 5.38954 4.75985 5.42145 4.81158 5.43801C4.83457 5.44536 4.857 5.45112 4.87048 5.45458L4.87344 5.45534C4.88969 5.45953 4.89477 5.46099 4.89768 5.46196L4.94386 5.47735H4.99254C5.13193 5.47735 5.27099 5.42344 5.37658 5.31786L5.37659 5.31786L5.37844 5.31598L9.14594 1.48162L9.14598 1.48165L9.14946 1.47799C9.35018 1.2667 9.35018 0.937001 9.14946 0.725711L9.14416 0.720134L9.13858 0.714836C8.92729 0.514109 8.59759 0.51411 8.3863 0.714836L8.38618 0.714709L8.37899 0.722027L4.99872 4.16065L1.62657 0.685227L1.62659 0.685203L1.62339 0.682003C1.51781 0.576418 1.37875 0.52251 1.23936 0.52251C1.09574 0.52251 0.968595 0.579026 0.871545 0.666372Z" fill="black" stroke="black" stroke-width="0.6"></path>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-content" id="content-panel" hidden>
+              <div class="settings-cards">
+                <div class="settings-card">
+                  <div class="settings-label">Text size</div>
+                  <select id="text-size-select" aria-label="Select text size">
+                    <option value="normal">Normal</option>
+                    <option value="large">Large</option>
+                    <option value="xlarge">Extra Large</option>
+                  </select>
+                </div>
+                <div class="settings-card">
+                  <div class="settings-label">Line height</div>
+                  <select id="line-height-select" aria-label="Select line height">
+                    <option value="normal">Normal</option>
+                    <option value="large">Large</option>
+                    <option value="xlarge">Extra Large</option>
+                  </select>
+                </div>
+                <div class="settings-card">
+                  <div class="settings-label">Letter spacing</div>
+                  <select id="letter-spacing-select" aria-label="Select letter spacing">
+                    <option value="normal">Normal</option>
+                    <option value="large">Large</option>
+                    <option value="xlarge">Extra Large</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section accordion">
+            <button class="accordion-toggle" aria-expanded="false" aria-controls="color-panel">
+              <span>Color</span>
+              <span class="chevron">
+                <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                  <path d="M0.871545 0.666372L0.871472 0.666291L0.865609 0.671861C0.643507 0.882858 0.651372 1.22597 0.849959 1.43501L0.84995 1.43502L0.851904 1.43704L4.60509 5.31438L4.60506 5.3144L4.60851 5.31786C4.6802 5.38954 4.75985 5.42145 4.81158 5.43801C4.83457 5.44536 4.857 5.45112 4.87048 5.45458L4.87344 5.45534C4.88969 5.45953 4.89477 5.46099 4.89768 5.46196L4.94386 5.47735H4.99254C5.13193 5.47735 5.27099 5.42344 5.37658 5.31786L5.37659 5.31786L5.37844 5.31598L9.14594 1.48162L9.14598 1.48165L9.14946 1.47799C9.35018 1.2667 9.35018 0.937001 9.14946 0.725711L9.14416 0.720134L9.13858 0.714836C8.92729 0.514109 8.59759 0.51411 8.3863 0.714836L8.38618 0.714709L8.37899 0.722027L4.99872 4.16065L1.62657 0.685227L1.62659 0.685203L1.62339 0.682003C1.51781 0.576418 1.37875 0.52251 1.23936 0.52251C1.09574 0.52251 0.968595 0.579026 0.871545 0.666372Z" fill="black" stroke="black" stroke-width="0.6"></path>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-content" id="color-panel" hidden>
+              <div class="settings-cards">
+                <div class="settings-card">
+                  <div class="settings-label">Color scheme</div>
+                  <select id="color-scheme-select" aria-label="Select color scheme">
+                    <option value="default">Default</option>
+                    <option value="dark">Dark</option>
+                    <option value="high-contrast">High Contrast</option>
+                  </select>
+                </div>
+                <div class="settings-card">
+                  <div class="settings-label">Saturation</div>
+                  <select id="saturation-select" aria-label="Select saturation">
+                    <option value="normal">Normal</option>
+                    <option value="grayscale">Grayscale</option>
+                    <option value="desaturated">Desaturated</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section accordion">
+            <button class="accordion-toggle" aria-expanded="false" aria-controls="visibility-panel">
+              <span>Visibility</span>
+              <span class="chevron">
+                <svg viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" width="18" height="12">
+                  <path d="M0.871545 0.666372L0.871472 0.666291L0.865609 0.671861C0.643507 0.882858 0.651372 1.22597 0.849959 1.43501L0.84995 1.43502L0.851904 1.43704L4.60509 5.31438L4.60506 5.3144L4.60851 5.31786C4.6802 5.38954 4.75985 5.42145 4.81158 5.43801C4.83457 5.44536 4.857 5.45112 4.87048 5.45458L4.87344 5.45534C4.88969 5.45953 4.89477 5.46099 4.89768 5.46196L4.94386 5.47735H4.99254C5.13193 5.47735 5.27099 5.42344 5.37658 5.31786L5.37659 5.31786L5.37844 5.31598L9.14594 1.48162L9.14598 1.48165L9.14946 1.47799C9.35018 1.2667 9.35018 0.937001 9.14946 0.725711L9.14416 0.720134L9.13858 0.714836C8.92729 0.514109 8.59759 0.51411 8.3863 0.714836L8.38618 0.714709L8.37899 0.722027L4.99872 4.16065L1.62657 0.685227L1.62659 0.685203L1.62339 0.682003C1.51781 0.576418 1.37875 0.52251 1.23936 0.52251C1.09574 0.52251 0.968595 0.579026 0.871545 0.666372Z" fill="black" stroke="black" stroke-width="0.6"></path>
+                </svg>
+              </span>
+            </button>
+            <div class="accordion-content" id="visibility-panel" hidden>
+              <div class="settings-cards">
+                <div class="settings-card">
+                  <div class="settings-label">Highlight links</div>
+                  <select id="highlight-links-select" aria-label="Select link highlighting">
+                    <option value="off">Off</option>
+                    <option value="underline">Underline</option>
+                    <option value="highlight">Highlight</option>
+                  </select>
+                </div>
+                <div class="settings-card">
+                  <div class="settings-label">Hide images</div>
+                  <select id="hide-images-select" aria-label="Select image visibility">
+                    <option value="show">Show</option>
+                    <option value="hide">Hide</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <button class="reset-btn" aria-label="Reset all accessibility settings">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-right: 8px;">
               <path d="M1 4V10H7" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -143,6 +243,42 @@
     const styles = `
     :root {
       --wcag-primary-color: #0033cc;
+      --font-size: 100%;
+      --line-height: 1.5;
+      --letter-spacing: normal;
+      --color-scheme: none;
+      --saturation: none;
+      --highlight-links: none;
+      --hide-images: block;
+    }
+
+    /* Apply CSS variables to the document */
+    body {
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      letter-spacing: var(--letter-spacing);
+    }
+
+    body[data-color-scheme="dark"] {
+      background-color: #1a1a1a;
+      color: #ffffff;
+    }
+
+    body[data-color-scheme="high-contrast"] {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    body {
+      filter: var(--saturation);
+    }
+
+    a {
+      text-decoration: var(--highlight-links);
+    }
+
+    img {
+      display: var(--hide-images);
     }
 
     #accessibility-widget {
@@ -593,6 +729,114 @@
         }
       }
     });
+
+    // Add event listeners for new select elements
+    const textSizeSelect = document.getElementById('text-size-select');
+    const lineHeightSelect = document.getElementById('line-height-select');
+    const letterSpacingSelect = document.getElementById('letter-spacing-select');
+    const colorSchemeSelect = document.getElementById('color-scheme-select');
+    const saturationSelect = document.getElementById('saturation-select');
+    const highlightLinksSelect = document.getElementById('highlight-links-select');
+    const hideImagesSelect = document.getElementById('hide-images-select');
+
+    textSizeSelect.addEventListener('change', function() {
+      const root = document.documentElement;
+      switch(this.value) {
+        case 'normal':
+          root.style.setProperty('--font-size', '100%');
+          break;
+        case 'large':
+          root.style.setProperty('--font-size', '120%');
+          break;
+        case 'xlarge':
+          root.style.setProperty('--font-size', '150%');
+          break;
+      }
+    });
+
+    lineHeightSelect.addEventListener('change', function() {
+      const root = document.documentElement;
+      switch(this.value) {
+        case 'normal':
+          root.style.setProperty('--line-height', '1.5');
+          break;
+        case 'large':
+          root.style.setProperty('--line-height', '1.8');
+          break;
+        case 'xlarge':
+          root.style.setProperty('--line-height', '2');
+          break;
+      }
+    });
+
+    letterSpacingSelect.addEventListener('change', function() {
+      const root = document.documentElement;
+      switch(this.value) {
+        case 'normal':
+          root.style.setProperty('--letter-spacing', 'normal');
+          break;
+        case 'large':
+          root.style.setProperty('--letter-spacing', '0.1em');
+          break;
+        case 'xlarge':
+          root.style.setProperty('--letter-spacing', '0.2em');
+          break;
+      }
+    });
+
+    colorSchemeSelect.addEventListener('change', function() {
+      const root = document.documentElement;
+      switch(this.value) {
+        case 'default':
+          root.style.removeProperty('--color-scheme');
+          break;
+        case 'dark':
+          root.style.setProperty('--color-scheme', 'dark');
+          break;
+        case 'high-contrast':
+          root.style.setProperty('--color-scheme', 'high-contrast');
+          break;
+      }
+    });
+
+    saturationSelect.addEventListener('change', function() {
+      const root = document.documentElement;
+      switch(this.value) {
+        case 'normal':
+          root.style.removeProperty('--saturation');
+          break;
+        case 'grayscale':
+          root.style.setProperty('--saturation', 'grayscale(100%)');
+          break;
+        case 'desaturated':
+          root.style.setProperty('--saturation', 'saturate(50%)');
+          break;
+      }
+    });
+
+    highlightLinksSelect.addEventListener('change', function() {
+      const root = document.documentElement;
+      switch(this.value) {
+        case 'off':
+          root.style.removeProperty('--highlight-links');
+          break;
+        case 'underline':
+          root.style.setProperty('--highlight-links', 'underline');
+          break;
+        case 'highlight':
+          root.style.setProperty('--highlight-links', 'highlight');
+          break;
+      }
+    });
+
+    hideImagesSelect.addEventListener('change', function() {
+      const root = document.documentElement;
+      if (this.value === 'hide') {
+        root.style.setProperty('--hide-images', 'none');
+      } else {
+        root.style.removeProperty('--hide-images');
+      }
+    });
   }
 
   // Accessibility profile functions
@@ -642,6 +886,15 @@
     root.style.removeProperty('--font-size');
     root.style.removeProperty('--reduce-motion');
     root.style.removeProperty('--reduce-transparency');
+    
+    // Reset all select elements to their default values
+    document.getElementById('text-size-select').value = 'normal';
+    document.getElementById('line-height-select').value = 'normal';
+    document.getElementById('letter-spacing-select').value = 'normal';
+    document.getElementById('color-scheme-select').value = 'default';
+    document.getElementById('saturation-select').value = 'normal';
+    document.getElementById('highlight-links-select').value = 'off';
+    document.getElementById('hide-images-select').value = 'show';
   }
 
   // Call init when script loads
