@@ -275,14 +275,10 @@
       flex-direction: column;
       position: fixed;
       top: 0;
-      right: -560px;
-      left: auto;
       width: 560px;
       height: 100vh;
       background: #000243;
       color: #fff;
-      border-radius: 24px 0 0 24px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
       font-family: 'Plus Jakarta Sans', Verdana, sans-serif;
       font-size: 14px;
       font-weight: 600;
@@ -302,9 +298,26 @@
       font-weight: 600 !important;
     }
 
-    #accessibility-panel.open {
+    /* Panel closed (default) */
+    #accessibility-widget:not(.left) #accessibility-panel {
+      right: -560px;
+      left: auto;
+      border-radius: 24px 0 0 24px;
+    }
+    #accessibility-widget.left #accessibility-panel {
+      left: -560px;
+      right: auto;
+      border-radius: 0 24px 24px 0;
+    }
+
+    /* Panel open */
+    #accessibility-widget:not(.left) #accessibility-panel.open {
       right: 0;
       left: auto;
+    }
+    #accessibility-widget.left #accessibility-panel.open {
+      left: 0;
+      right: auto;
     }
 
     /* Add more styles for your panel content as needed */
