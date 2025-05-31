@@ -3,7 +3,7 @@
   <div id="accessibility-widget">
     <button id="accessibility-btn" aria-label="Open accessibility menu">
       <!-- Your SVG icon -->
-      <svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.17395 0 0 7.17395 0 16C0 24.826 7.17395 32 16 32C24.826 32 32 24.826 32 16C32 7.17395 24.826 0 16 0ZM16 29.7674C8.4093 29.7674 2.23256 23.5907 2.23256 16C2.23256 8.4093 8.4093 2.23256 16 2.23256C23.5907 2.23256 29.7674 8.4093 29.7674 16C29.7674 23.5907 23.5907 29.7674 16 29.7674ZM13.0233 8.55814C13.0233 6.92093 14.3628 5.5814 16 5.5814C17.6372 5.5814 18.9767 6.92093 18.9767 8.55814C18.9767 10.1953 17.6372 11.5349 16 11.5349C14.3628 11.5349 13.0233 10.1953 13.0233 8.55814ZM17.1163 16.8037V18.6047L21.3581 24.2605C21.7302 24.7516 21.626 25.4512 21.1349 25.8233C20.9414 25.9721 20.7033 26.0465 20.4651 26.0465C20.1228 26.0465 19.7953 25.8977 19.5721 25.6L16 20.8372L12.4279 25.6C12.0558 26.0912 11.3563 26.1953 10.8651 25.8233C10.374 25.4512 10.2698 24.7516 10.6419 24.2605L14.8837 18.6047V16.8037L11.1777 15.5684C10.5972 15.3749 10.2698 14.7349 10.4781 14.1544C10.6716 13.574 11.2967 13.2465 11.8921 13.4549L16 14.8242L20.1079 13.4549C20.7033 13.2614 21.3284 13.574 21.5219 14.1544C21.7153 14.7349 21.4028 15.3749 20.8223 15.5684L17.1163 16.8037Z" fill="#fff"></path></svg>
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 0C7.17395 0 0 7.17395 0 16C0 24.826 7.17395 32 16 32C24.826 32 32 24.826 32 16C32 7.17395 24.826 0 16 0ZM16 29.7674C8.4093 29.7674 2.23256 23.5907 2.23256 16C2.23256 8.4093 8.4093 2.23256 16 2.23256C23.5907 2.23256 29.7674 8.4093 29.7674 16C29.7674 23.5907 23.5907 29.7674 16 29.7674ZM13.0233 8.55814C13.0233 6.92093 14.3628 5.5814 16 5.5814C17.6372 5.5814 18.9767 6.92093 18.9767 8.55814C18.9767 10.1953 17.6372 11.5349 16 11.5349C14.3628 11.5349 13.0233 10.1953 13.0233 8.55814ZM17.1163 16.8037V18.6047L21.3581 24.2605C21.7302 24.7516 21.626 25.4512 21.1349 25.8233C20.9414 25.9721 20.7033 26.0465 20.4651 26.0465C20.1228 26.0465 19.7953 25.8977 19.5721 25.6L16 20.8372L12.4279 25.6C12.0558 26.0912 11.3563 26.1953 10.8651 25.8233C10.374 25.4512 10.2698 24.7516 10.6419 24.2605L14.8837 18.6047V16.8037L11.1777 15.5684C10.5972 15.3749 10.2698 14.7349 10.4781 14.1544C10.6716 13.574 11.2967 13.2465 11.8921 13.4549L16 14.8242L20.1079 13.4549C20.7033 13.2614 21.3284 13.574 21.5219 14.1544C21.7153 14.7349 21.4028 15.3749 20.8223 15.5684L17.1163 16.8037Z" fill="#fff"></path></svg>
     </button>
     <div id="accessibility-panel" aria-hidden="true">
       <div class="accessibility-header">
@@ -33,7 +33,7 @@
               <div class="settings-label">Language</div>
               <select id="language-select">
                 <option value="en">English</option>
-                <option value="es">Spanish</option>
+                <option value="sv">Svenska</option>
               </select>
             </div>
             <div class="settings-card">
@@ -217,9 +217,230 @@
         </span>
         <span style="margin-left: 12px;">Reset to default settings</span>
       </button>
+      <div class="powered-by-verido">
+        <span class="verido-logo" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="120" zoomAndPan="magnify" viewBox="0 0 750 281.25" height="40" preserveAspectRatio="xMidYMid meet" version="1.2"><defs/><g id="7782cc9ea1"><g style="fill:#ffffff;fill-opacity:1;"><g transform="translate(136.632957, 216.747651)"><path style="stroke:none" d="M 112.171875 -112.84375 L 71.125 0 L 43.59375 0 L 2.390625 -112.84375 L 27.359375 -112.84375 L 51.125 -41.03125 L 57.625 -18.8125 L 63.953125 -40.859375 L 87.890625 -112.84375 Z M 112.171875 -112.84375 "/></g></g><g style="fill:#ffffff;fill-opacity:1;"><g transform="translate(241.96386, 216.747651)"><path style="stroke:none" d="M 51.984375 1.703125 C 42.972656 1.703125 35.132812 -0.0625 28.46875 -3.59375 C 21.800781 -7.125 16.640625 -12.191406 12.984375 -18.796875 C 9.335938 -25.410156 7.515625 -33.394531 7.515625 -42.75 C 7.515625 -52.09375 9.335938 -60.066406 12.984375 -66.671875 C 16.640625 -73.285156 21.742188 -78.359375 28.296875 -81.890625 C 34.847656 -85.429688 42.34375 -87.203125 50.78125 -87.203125 C 59.445312 -87.203125 66.800781 -85.460938 72.84375 -81.984375 C 78.882812 -78.503906 83.5 -73.769531 86.6875 -67.78125 C 89.882812 -61.800781 91.484375 -54.992188 91.484375 -47.359375 C 91.484375 -45.078125 91.425781 -42.910156 91.3125 -40.859375 C 91.195312 -38.804688 91.023438 -36.984375 90.796875 -35.390625 L 22.5625 -35.390625 L 22.5625 -51.640625 L 80.53125 -51.640625 L 69.25 -47.53125 C 69.25 -54.71875 67.625 -60.25 64.375 -64.125 C 61.125 -68 56.535156 -69.9375 50.609375 -69.9375 C 46.273438 -69.9375 42.539062 -68.910156 39.40625 -66.859375 C 36.269531 -64.804688 33.90625 -61.753906 32.3125 -57.703125 C 30.71875 -53.660156 29.921875 -48.5625 29.921875 -42.40625 C 29.921875 -36.363281 30.800781 -31.375 32.5625 -27.4375 C 34.332031 -23.507812 36.84375 -20.578125 40.09375 -18.640625 C 43.34375 -16.703125 47.25 -15.734375 51.8125 -15.734375 C 56.820312 -15.734375 60.863281 -16.703125 63.9375 -18.640625 C 67.019531 -20.578125 69.414062 -23.253906 71.125 -26.671875 L 89.765625 -19.5 C 87.941406 -15.050781 85.175781 -11.226562 81.46875 -8.03125 C 77.769531 -4.84375 73.382812 -2.421875 68.3125 -0.765625 C 63.238281 0.878906 57.796875 1.703125 51.984375 1.703125 Z M 51.984375 1.703125 "/></g></g><g style="fill:#ffffff;fill-opacity:1;"><g transform="translate(340.968089, 216.747651)"><path style="stroke:none" d="M 12.3125 0 L 12.3125 -85.484375 L 32.65625 -85.484375 L 34.203125 -68.734375 C 36.472656 -74.660156 39.800781 -79.21875 44.1875 -82.40625 C 48.582031 -85.601562 54.085938 -87.203125 60.703125 -87.203125 C 62.640625 -87.203125 64.40625 -87.03125 66 -86.6875 C 67.59375 -86.34375 68.90625 -85.890625 69.9375 -85.328125 L 67.203125 -65.65625 C 66.054688 -66.113281 64.65625 -66.457031 63 -66.6875 C 61.351562 -66.914062 59.21875 -67.03125 56.59375 -67.03125 C 53.175781 -67.03125 49.867188 -66.203125 46.671875 -64.546875 C 43.484375 -62.890625 40.863281 -60.378906 38.8125 -57.015625 C 36.757812 -53.660156 35.734375 -49.414062 35.734375 -44.28125 L 35.734375 0 Z M 12.3125 0 "/></g></g><g style="fill:#ffffff;fill-opacity:1;"><g transform="translate(413.126613, 216.747651)"><path style="stroke:none" d="M 24.109375 -97.796875 C 19.203125 -97.796875 15.550781 -98.847656 13.15625 -100.953125 C 10.769531 -103.066406 9.578125 -106.175781 9.578125 -110.28125 C 9.578125 -114.5 10.769531 -117.660156 13.15625 -119.765625 C 15.550781 -121.878906 19.203125 -122.9375 24.109375 -122.9375 C 29.015625 -122.9375 32.660156 -121.878906 35.046875 -119.765625 C 37.441406 -117.660156 38.640625 -114.5 38.640625 -110.28125 C 38.640625 -106.175781 37.441406 -103.066406 35.046875 -100.953125 C 32.660156 -98.847656 29.015625 -97.796875 24.109375 -97.796875 Z M 35.734375 -85.484375 L 35.734375 0 L 12.3125 0 L 12.3125 -85.484375 Z M 35.734375 -85.484375 "/></g></g><g style="fill:#ffffff;fill-opacity:1;"><g transform="translate(461.346297, 216.747651)"><path style="stroke:none" d="M 44.625 1.703125 C 37.5625 1.703125 31.265625 -0.0625 25.734375 -3.59375 C 20.203125 -7.125 15.867188 -12.191406 12.734375 -18.796875 C 9.597656 -25.410156 8.03125 -33.335938 8.03125 -42.578125 C 8.03125 -52.035156 9.679688 -60.097656 12.984375 -66.765625 C 16.296875 -73.429688 20.769531 -78.503906 26.40625 -81.984375 C 32.050781 -85.460938 38.410156 -87.203125 45.484375 -87.203125 C 53.003906 -87.203125 59.210938 -85.035156 64.109375 -80.703125 C 69.015625 -76.367188 72.207031 -70.785156 73.6875 -63.953125 L 71.46875 -61.21875 L 71.46875 -122.9375 L 94.890625 -122.9375 L 94.890625 0 L 73.859375 0 L 72.328125 -25.984375 L 75.0625 -24.625 C 74.375 -19.257812 72.601562 -14.609375 69.75 -10.671875 C 66.90625 -6.742188 63.316406 -3.695312 58.984375 -1.53125 C 54.648438 0.625 49.863281 1.703125 44.625 1.703125 Z M 51.46875 -16.25 C 55.570312 -16.25 59.101562 -17.300781 62.0625 -19.40625 C 65.03125 -21.507812 67.335938 -24.613281 68.984375 -28.71875 C 70.640625 -32.820312 71.46875 -37.726562 71.46875 -43.4375 C 71.46875 -48.90625 70.671875 -53.546875 69.078125 -57.359375 C 67.484375 -61.179688 65.203125 -64.117188 62.234375 -66.171875 C 59.273438 -68.222656 55.800781 -69.25 51.8125 -69.25 C 45.425781 -69.25 40.4375 -66.992188 36.84375 -62.484375 C 33.257812 -57.984375 31.46875 -51.40625 31.46875 -42.75 C 31.46875 -34.082031 33.234375 -27.5 36.765625 -23 C 40.296875 -18.5 45.195312 -16.25 51.46875 -16.25 Z M 51.46875 -16.25 "/></g></g><g style="fill:#ffffff;fill-opacity:1;"><g transform="translate(568.558096, 216.747651)"><path style="stroke:none" d="M 51.296875 -87.203125 C 59.960938 -87.203125 67.570312 -85.429688 74.125 -81.890625 C 80.675781 -78.359375 85.800781 -73.285156 89.5 -66.671875 C 93.207031 -60.066406 95.0625 -52.09375 95.0625 -42.75 C 95.0625 -33.507812 93.207031 -25.554688 89.5 -18.890625 C 85.800781 -12.222656 80.675781 -7.125 74.125 -3.59375 C 67.570312 -0.0625 59.960938 1.703125 51.296875 1.703125 C 42.742188 1.703125 35.160156 -0.0625 28.546875 -3.59375 C 21.941406 -7.125 16.785156 -12.222656 13.078125 -18.890625 C 9.367188 -25.554688 7.515625 -33.507812 7.515625 -42.75 C 7.515625 -52.09375 9.367188 -60.066406 13.078125 -66.671875 C 16.785156 -73.285156 21.941406 -78.359375 28.546875 -81.890625 C 35.160156 -85.429688 42.742188 -87.203125 51.296875 -87.203125 Z M 51.296875 -69.765625 C 46.960938 -69.765625 43.285156 -68.765625 40.265625 -66.765625 C 37.242188 -64.773438 34.9375 -61.785156 33.34375 -57.796875 C 31.75 -53.804688 30.953125 -48.789062 30.953125 -42.75 C 30.953125 -36.707031 31.75 -31.691406 33.34375 -27.703125 C 34.9375 -23.710938 37.242188 -20.71875 40.265625 -18.71875 C 43.285156 -16.726562 46.960938 -15.734375 51.296875 -15.734375 C 55.515625 -15.734375 59.132812 -16.726562 62.15625 -18.71875 C 65.175781 -20.71875 67.484375 -23.710938 69.078125 -27.703125 C 70.671875 -31.691406 71.46875 -36.707031 71.46875 -42.75 C 71.46875 -48.789062 70.671875 -53.804688 69.078125 -57.796875 C 67.484375 -61.785156 65.175781 -64.773438 62.15625 -66.765625 C 59.132812 -68.765625 55.515625 -69.765625 51.296875 -69.765625 Z M 51.296875 -69.765625 "/></g></g><path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke:#0e20c8;stroke-opacity:1;stroke-miterlimit:4;" d="M 1.998753 2.000319 L 38.724162 2.000063 " transform="matrix(0.897489,1.152776,-1.152776,0.897489,94.347998,35.826403)"/><path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke:#0e20c8;stroke-opacity:1;stroke-miterlimit:4;" d="M 2.000793 1.999514 L 38.723023 1.999502 " transform="matrix(-0.180515,1.449756,-1.449756,-0.180515,163.342012,19.858718)"/><path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke:#0e20c8;stroke-opacity:1;stroke-miterlimit:4;" d="M 1.999617 1.999046 L 38.723383 2.0009 " transform="matrix(-1.152776,0.897489,-0.897489,-1.152776,218.923451,54.982475)"/><path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke:#0e20c8;stroke-opacity:1;stroke-miterlimit:4;" d="M 2.000141 2.000363 L 38.72344 1.998464 " transform="matrix(-1.152776,0.897489,-0.897489,-1.152776,124.097112,128.585085)"/><path style="fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:miter;stroke:#0e20c8;stroke-opacity:1;stroke-miterlimit:4;" d="M 2.000679 1.999589 L 38.722908 1.999577 " transform="matrix(1.449756,0.180515,-0.180515,1.449756,58.27296,94.314149)"/></g></svg>
+        </span>
+        <a class="verido-text" href="https://verido.se/" target="_blank" rel="noopener noreferrer" aria-label="Powered by Verido (opens in a new tab)">Powered by Verido</a>
+      </div>
     </div>
   </div>
   `;
+
+  // Add translation objects and logic after widgetHTML definition
+  const translations = {
+    en: {
+      accessibilityMenu: "Accessibility menu",
+      widgetSettings: "Widget settings",
+      language: "Language",
+      position: "Position",
+      right: "Right",
+      left: "Left",
+      accessibilityProfiles: "Accessibility profiles",
+      motorImpairments: "Motor impairments",
+      blindness: "Blindness",
+      colorBlindness: "Color blindness",
+      dyslexia: "Dyslexia",
+      lowVision: "Low vision",
+      epilepsy: "Epilepsy",
+      adhd: "ADHD",
+      cognitive: "Cognitive and learning disabilities",
+      content: "Content",
+      fontSize: "Font size",
+      underlineLinks: "Underline links",
+      letterSpacing: "Letter spacing",
+      lineHeight: "Line height",
+      textToSpeech: "Text to speech",
+      color: "Color",
+      invertColors: "Invert colors",
+      contrast: "Contrast",
+      saturation: "Saturation",
+      visibility: "Visibility",
+      disableAnimations: "Disable animations",
+      enlargeCursor: "Enlarge cursor",
+      hideMedia: "Hide images and videos",
+      showLine: "Show line",
+      facilitiesDyslexics: "Facilities for dyslexics",
+      reset: "Reset to default settings",
+      // Dynamic texts
+      openMenu: "Open accessibility menu",
+      closeMenu: "Close accessibility menu",
+      keyboardShortcut: "[CTRL + U]",
+      tooltips: {
+        fontSize: "Change text size",
+        underlineLinks: "Make links more visible",
+        letterSpacing: "Adjust space between letters",
+        lineHeight: "Adjust space between lines",
+        textToSpeech: "Click on text to hear it read aloud",
+        invertColors: "Invert all colors on the page",
+        contrast: "Increase contrast between text and background",
+        saturation: "Adjust color intensity",
+        disableAnimations: "Stop all animations and transitions",
+        enlargeCursor: "Make the cursor larger and easier to see",
+        hideMedia: "Hide all images and videos",
+        showLine: "Show a reading guide line",
+        facilitiesDyslexics: "Enable features that help with dyslexia"
+      }
+    },
+    sv: {
+      accessibilityMenu: "Tillgänglighetsmeny",
+      widgetSettings: "Widgetinställningar",
+      language: "Språk",
+      position: "Position",
+      right: "Höger",
+      left: "Vänster",
+      accessibilityProfiles: "Tillgänglighetsprofiler",
+      motorImpairments: "Motoriska funktionsnedsättningar",
+      blindness: "Blindhet",
+      colorBlindness: "Färgblindhet",
+      dyslexia: "Dyslexi",
+      lowVision: "Nedsatt syn",
+      epilepsy: "Epilepsi",
+      adhd: "ADHD",
+      cognitive: "Kognitiva och inlärningssvårigheter",
+      content: "Innehåll",
+      fontSize: "Textstorlek",
+      underlineLinks: "Understryk länkar",
+      letterSpacing: "Bokstavsavstånd",
+      lineHeight: "Radavstånd",
+      textToSpeech: "Text till tal",
+      color: "Färg",
+      invertColors: "Invertera färger",
+      contrast: "Kontrast",
+      saturation: "Mättnad",
+      visibility: "Synlighet",
+      disableAnimations: "Inaktivera animationer",
+      enlargeCursor: "Förstora markör",
+      hideMedia: "Dölj bilder och videor",
+      showLine: "Visa linje",
+      facilitiesDyslexics: "Funktioner för dyslektiker",
+      reset: "Återställ till standardinställningar",
+      // Dynamic texts
+      openMenu: "Öppna tillgänglighetsmeny",
+      closeMenu: "Stäng tillgänglighetsmeny",
+      keyboardShortcut: "[CTRL + U]",
+      tooltips: {
+        fontSize: "Ändra textstorlek",
+        underlineLinks: "Gör länkar mer synliga",
+        letterSpacing: "Justera avstånd mellan bokstäver",
+        lineHeight: "Justera avstånd mellan rader",
+        textToSpeech: "Klicka på text för att höra den uppläst",
+        invertColors: "Invertera alla färger på sidan",
+        contrast: "Öka kontrasten mellan text och bakgrund",
+        saturation: "Justera färgintensitet",
+        disableAnimations: "Stoppa alla animationer och övergångar",
+        enlargeCursor: "Gör markören större och lättare att se",
+        hideMedia: "Dölj alla bilder och videor",
+        showLine: "Visa en läsguide",
+        facilitiesDyslexics: "Aktivera funktioner som hjälper vid dyslexi"
+      }
+    }
+  };
+
+  function setLanguage(lang) {
+    const t = translations[lang] || translations.en;
+    
+    // Update all static texts
+    // Header
+    document.querySelector('.accessibility-header-title').childNodes[0].textContent = t.accessibilityMenu + ' ';
+    document.querySelector('.accessibility-header-title span').textContent = t.keyboardShortcut;
+    
+    // Update button aria-labels
+    document.getElementById('accessibility-btn').setAttribute('aria-label', t.openMenu);
+    document.getElementById('daccheac').setAttribute('aria-label', t.closeMenu);
+    
+    // Widget settings
+    document.querySelector('.accordion-toggle[aria-controls="widget-settings-panel"] span').textContent = t.widgetSettings;
+    document.querySelector('.settings-label').textContent = t.language;
+    document.querySelector('#position-select').previousElementSibling.textContent = t.position;
+    document.querySelector('#position-select option[value="right"]').textContent = t.right;
+    document.querySelector('#position-select option[value="left"]').textContent = t.left;
+    
+    // Profiles
+    document.querySelector('.accordion-toggle[aria-controls="profiles-panel"] span').textContent = t.accessibilityProfiles;
+    const profileBtns = document.querySelectorAll('.profile-btn');
+    if (profileBtns[0]) profileBtns[0].querySelectorAll('span')[1].textContent = t.motorImpairments;
+    if (profileBtns[1]) profileBtns[1].querySelectorAll('span')[1].textContent = t.blindness;
+    if (profileBtns[2]) profileBtns[2].querySelectorAll('span')[1].textContent = t.colorBlindness;
+    if (profileBtns[3]) profileBtns[3].querySelectorAll('span')[1].textContent = t.dyslexia;
+    if (profileBtns[4]) profileBtns[4].querySelectorAll('span')[1].textContent = t.lowVision;
+    if (profileBtns[5]) profileBtns[5].querySelectorAll('span')[1].textContent = t.epilepsy;
+    if (profileBtns[6]) profileBtns[6].querySelectorAll('span')[1].textContent = t.adhd;
+    if (profileBtns[7]) profileBtns[7].querySelectorAll('span')[1].textContent = t.cognitive;
+    
+    // Content
+    document.querySelector('.accordion-toggle[aria-controls="content-panel"] span').textContent = t.content;
+    const contentBtns = document.querySelectorAll('#daccbxc2 button');
+    const contentLabels = [t.fontSize, t.underlineLinks, t.letterSpacing, t.lineHeight, t.textToSpeech];
+    contentBtns.forEach((btn, i) => {
+      if (btn) {
+        // Remove all label spans except the icon (first span)
+        const spans = btn.querySelectorAll('span');
+        for (let j = spans.length - 1; j > 0; j--) {
+          spans[j].remove();
+        }
+        // Add the correct label
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = contentLabels[i];
+        btn.appendChild(labelSpan);
+      }
+    });
+    
+    // Color
+    document.querySelector('.accordion-toggle[aria-controls="color-panel"] span').textContent = t.color;
+    const colorBtns = document.querySelectorAll('#daccbxc3 button');
+    const colorLabels = [t.invertColors, t.contrast, t.saturation];
+    colorBtns.forEach((btn, i) => {
+      if (btn) {
+        // Remove all label spans except the icon (first span)
+        const spans = btn.querySelectorAll('span');
+        for (let j = spans.length - 1; j > 0; j--) {
+          spans[j].remove();
+        }
+        // Add the correct label
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = colorLabels[i];
+        btn.appendChild(labelSpan);
+      }
+    });
+    
+    // Visibility
+    document.querySelector('.accordion-toggle[aria-controls="visibility-panel"] span').textContent = t.visibility;
+    const visBtns = document.querySelectorAll('#daccbxc4 button');
+    const visLabels = [t.disableAnimations, t.enlargeCursor, t.hideMedia, t.showLine, t.facilitiesDyslexics];
+    visBtns.forEach((btn, i) => {
+      if (btn) {
+        // Remove all label spans except the icon (first span)
+        const spans = btn.querySelectorAll('span');
+        for (let j = spans.length - 1; j > 0; j--) {
+          spans[j].remove();
+        }
+        // Add the correct label
+        const labelSpan = document.createElement('span');
+        labelSpan.textContent = visLabels[i];
+        btn.appendChild(labelSpan);
+      }
+    });
+    
+    // Reset button
+    const resetBtn = document.querySelector('#reset-btn span:last-child');
+    if (resetBtn) resetBtn.textContent = t.reset;
+
+    // Update tooltips
+    const tooltipElements = document.querySelectorAll('.dacctltp');
+    tooltipElements.forEach(tooltip => {
+      const button = tooltip.closest('button');
+      if (button) {
+        const buttonText = button.querySelector('span:last-child').textContent.toLowerCase();
+        for (const [key, value] of Object.entries(t.tooltips)) {
+          if (buttonText.includes(key.toLowerCase())) {
+            tooltip.setAttribute('title', value);
+            break;
+          }
+        }
+      }
+    });
+  }
 
   function init() {
     if (document.getElementById('accessibility-widget')) {
@@ -229,8 +450,8 @@
     const styles = `
     #accessibility-widget {
       position: fixed;
-      bottom: 32px;
-      right: 32px;
+      bottom: 88px;
+      right: 27px;
       z-index: 9999;
     }
 
@@ -866,7 +1087,7 @@
       gap: 20px;
       grid-template-columns: 1fr 1fr;
       max-height: 725px;
-      overflow: hidden;
+      overflow: visible;
       padding-top: 20px;
       transition: all .5s ease;
     }
@@ -919,6 +1140,59 @@
       width: 16px;
       height: 16px;
     } 
+    .powered-by-verido {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+      opacity: 0.85;
+      user-select: none;
+      gap: 4px;
+      position: relative;
+      min-height: 40px;
+    }
+    .powered-by-verido .verido-logo {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      height: 40px;
+      width: 120px;
+      min-width: 80px;
+      max-width: 140px;
+    }
+    .powered-by-verido .verido-logo svg {
+      display: block;
+      height: 40px;
+      width: 120px;
+      min-width: 80px;
+      max-width: 140px;
+    }
+    .powered-by-verido .verido-text {
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: inherit;
+      text-decoration: none;
+      outline: none;
+      transition: text-decoration 0.2s, color 0.2s;
+    }
+    .powered-by-verido .verido-text:focus, .powered-by-verido .verido-text:hover {
+      text-decoration: underline;
+      color: #b3c6ff;
+    }
     `;
 
     const styleSheet = document.createElement("style");
@@ -1202,6 +1476,16 @@
         btn.setAttribute('aria-pressed', 'false');
       });
     });
+
+    // Add language change event listener
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+      languageSelect.addEventListener('change', function() {
+        setLanguage(this.value);
+      });
+      // Set initial language
+      setLanguage(languageSelect.value);
+    }
   }
 
   // Accessibility profile functions
@@ -1390,9 +1674,9 @@
     html[data-letter-spacing="2"] { letter-spacing: 0.24em !important; }
     html[data-letter-spacing="3"] { letter-spacing: 0.36em !important; }
 
-    html[data-line-height="1"] { line-height: 1.5 !important; }
-    html[data-line-height="2"] { line-height: 2 !important; }
-    html[data-line-height="3"] { line-height: 2.5 !important; }
+    html[data-line-height="1"] * { line-height: 1.5 !important; }
+    html[data-line-height="2"] * { line-height: 2 !important; }
+    html[data-line-height="3"] * { line-height: 2.5 !important; }
 
     html[data-dyslexic-font="true"] * {
       font-family: 'OpenDyslexic', Arial, sans-serif !important;
@@ -1419,11 +1703,24 @@
       position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      height: 100px;
-      background: rgba(0, 0, 0, 0.1);
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,33,200,0.6);
       pointer-events: none;
-      z-index: 9999;
+      z-index: 2147483647;
+      transition: clip-path 0s;
+    }
+    .ruler-strip {
+      position: absolute;
+      left: 0;
+      width: 100vw;
+      height: 100px;
+      border-top: 5px solid #0021C8;
+      border-bottom: 5px solid #0021C8;
+      background: transparent;
+      pointer-events: none;
+      z-index: 2147483648;
+      box-sizing: border-box;
     }
 
     #accessibility-widget [aria-pressed="true"] {
@@ -1440,6 +1737,14 @@ function enableRulerFollow() {
   const ruler = document.querySelector('.reading-ruler');
   if (!ruler) return;
   if (rulerMoveHandler) return; // Already enabled
+  const rulerHeight = 100; // px
+  // Add the ruler-strip if not present
+  let strip = ruler.querySelector('.ruler-strip');
+  if (!strip) {
+    strip = document.createElement('div');
+    strip.className = 'ruler-strip';
+    ruler.appendChild(strip);
+  }
   rulerMoveHandler = function(e) {
     let y = 0;
     if (e.touches && e.touches.length) {
@@ -1447,10 +1752,22 @@ function enableRulerFollow() {
     } else {
       y = e.clientY;
     }
-    ruler.style.top = (y - ruler.offsetHeight / 2) + 'px';
+    // Calculate the top and bottom of the transparent strip
+    const top = Math.max(0, y - rulerHeight / 2);
+    const bottom = Math.min(window.innerHeight, y + rulerHeight / 2);
+    // Use clip-path to create a transparent strip
+    ruler.style.clipPath = `polygon(0 0, 100vw 0, 100vw ${top}px, 0 ${top}px, 0 ${bottom}px, 100vw ${bottom}px, 100vw 100vh, 0 100vh)`;
+    // Position the strip exactly at the clear strip's top edge
+    strip.style.top = `${top}px`;
   };
   window.addEventListener('mousemove', rulerMoveHandler);
   window.addEventListener('touchmove', rulerMoveHandler);
+  // Initialize at center
+  const initialY = window.innerHeight / 2;
+  const top = Math.max(0, initialY - rulerHeight / 2);
+  const bottom = Math.min(window.innerHeight, initialY + rulerHeight / 2);
+  ruler.style.clipPath = `polygon(0 0, 100vw 0, 100vw ${top}px, 0 ${top}px, 0 ${bottom}px, 100vw ${bottom}px, 100vw 100vh, 0 100vh)`;
+  strip.style.top = `${top}px`;
 }
 function disableRulerFollow() {
   if (rulerMoveHandler) {
