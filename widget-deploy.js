@@ -1193,12 +1193,12 @@
       text-decoration: underline;
       color: #b3c6ff;
     }
-    html[data-font-size="1"] { font-size: 1.2em !important; }
-    html[data-font-size="1"] * { font-size: 1.2em !important; }
-    html[data-font-size="2"] { font-size: 1.4em !important; }
-    html[data-font-size="2"] * { font-size: 1.4em !important; }
-    html[data-font-size="3"] { font-size: 1.6em !important; }
-    html[data-font-size="3"] * { font-size: 1.6em !important; }
+    html[data-font-size="1"] { font-size: 1.1em !important; }
+    html[data-font-size="1"] * { font-size: 1.1em !important; }
+    html[data-font-size="2"] { font-size: 1.2em !important; }
+    html[data-font-size="2"] * { font-size: 1.2em !important; }
+    html[data-font-size="3"] { font-size: 1.3em !important; }
+    html[data-font-size="3"] * { font-size: 1.3em !important; }
     `;
 
     const styleSheet = document.createElement("style");
@@ -1340,16 +1340,17 @@
       
       // Remove any existing font size attributes
       document.documentElement.removeAttribute('data-font-size');
-      document.querySelectorAll('*').forEach(el => {
+      document.querySelectorAll('p, span, div, li, td, th').forEach(el => {
         el.style.removeProperty('font-size');
       });
       
       // Apply new font size
       if (newSize !== 'default') {
         document.documentElement.setAttribute('data-font-size', newSize);
-        const sizeMap = { '1': '1.2em', '2': '1.4em', '3': '1.6em' };
-        document.querySelectorAll('*').forEach(el => {
-          if (el.tagName !== 'SCRIPT' && el.tagName !== 'STYLE') {
+        const sizeMap = { '1': '1.1em', '2': '1.2em', '3': '1.3em' };
+        document.querySelectorAll('p, span, div, li, td, th').forEach(el => {
+          // Skip elements that are part of the accessibility widget
+          if (!el.closest('#accessibility-widget')) {
             el.style.fontSize = sizeMap[newSize];
           }
         });
@@ -1690,9 +1691,9 @@
     html[data-saturation="2"] { filter: saturate(200%) !important; }
     html[data-saturation="3"] { filter: grayscale(100%) !important; }
 
-    html[data-font-size="1"] { font-size: 1.2em !important; }
-    html[data-font-size="2"] { font-size: 1.4em !important; }
-    html[data-font-size="3"] { font-size: 1.6em !important; }
+    html[data-font-size="1"] { font-size: 1.1em !important; }
+    html[data-font-size="2"] { font-size: 1.2em !important; }
+    html[data-font-size="3"] { font-size: 1.3em !important; }
 
     html[data-letter-spacing="1"] { letter-spacing: 0.12em !important; }
     html[data-letter-spacing="2"] { letter-spacing: 0.24em !important; }
