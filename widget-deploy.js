@@ -1193,13 +1193,13 @@
       text-decoration: underline;
       color: #b3c6ff;
     }
-    html[data-font-size="1"] { font-size: 1.13333em !important; }
+    html[data-font-size="1"] { font-size: 1.0556em !important; }
     html[data-font-size="1"] p, 
     html[data-font-size="1"] span, 
     html[data-font-size="1"] div, 
     html[data-font-size="1"] li, 
     html[data-font-size="1"] td, 
-    html[data-font-size="1"] th { font-size: 1.13333em !important; }
+    html[data-font-size="1"] th { font-size: 1.0556em !important; }
     
     html[data-font-size="2"] { font-size: 1.0588em !important; }
     html[data-font-size="2"] p, 
@@ -1209,13 +1209,13 @@
     html[data-font-size="2"] td, 
     html[data-font-size="2"] th { font-size: 1.0588em !important; }
     
-    html[data-font-size="3"] { font-size: 1.0556em !important; }
+    html[data-font-size="3"] { font-size: 1.0656em !important; }
     html[data-font-size="3"] p, 
     html[data-font-size="3"] span, 
     html[data-font-size="3"] div, 
     html[data-font-size="3"] li, 
     html[data-font-size="3"] td, 
-    html[data-font-size="3"] th { font-size: 1.0556em !important; }
+    html[data-font-size="3"] th { font-size: 1.0656em !important; }
     `;
 
     const styleSheet = document.createElement("style");
@@ -1364,11 +1364,7 @@
       // Apply new font size
       if (newSize !== 'default') {
         document.documentElement.setAttribute('data-font-size', newSize);
-        const sizeMap = { 
-          '1': '1.13333em',  // 13.333% increase
-          '2': '1.0588em',   // 5.88% increase
-          '3': '1.0556em'    // 5.56% increase
-        };
+        const sizeMap = { '1': '1.0556em', '2': '1.0588em', '3': '1.0656em' };
         document.querySelectorAll('p, span, div, li, td, th').forEach(el => {
           // Skip elements that are part of the accessibility widget
           if (!el.closest('#accessibility-widget')) {
