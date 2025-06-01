@@ -1193,6 +1193,12 @@
       text-decoration: underline;
       color: #b3c6ff;
     }
+    html[data-font-size="1"] { font-size: 1.2em !important; }
+    html[data-font-size="1"] * { font-size: 1.2em !important; }
+    html[data-font-size="2"] { font-size: 1.4em !important; }
+    html[data-font-size="2"] * { font-size: 1.4em !important; }
+    html[data-font-size="3"] { font-size: 1.6em !important; }
+    html[data-font-size="3"] * { font-size: 1.6em !important; }
     `;
 
     const styleSheet = document.createElement("style");
@@ -1330,33 +1336,26 @@
       const currentSize = document.documentElement.getAttribute('data-font-size') || 'default';
       const sizes = ['default', '1', '2', '3'];
       const nextIndex = (sizes.indexOf(currentSize) + 1) % sizes.length;
-      document.documentElement.setAttribute('data-font-size', sizes[nextIndex]);
-      this.setAttribute('aria-pressed', sizes[nextIndex] !== 'default');
+      const newSize = sizes[nextIndex];
       
-      // Handle Wix iframes
-      const wixIframes = document.querySelectorAll('iframe[src*="wix.com"]');
-      wixIframes.forEach(iframe => {
-        try {
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          const iframeRoot = iframeDoc.documentElement;
-          iframeRoot.setAttribute('data-font-size', sizes[nextIndex]);
-          
-          // Inject font size styles into Wix iframe
-          const style = iframeDoc.createElement('style');
-          style.id = 'wcag-font-size-styles';
-          style.textContent = `
-            [data-font-size="1"] * { font-size: 1.2em !important; }
-            [data-font-size="2"] * { font-size: 1.4em !important; }
-            [data-font-size="3"] * { font-size: 1.6em !important; }
-          `;
-          if (iframeDoc.getElementById('wcag-font-size-styles')) {
-            iframeDoc.getElementById('wcag-font-size-styles').remove();
-          }
-          iframeDoc.head.appendChild(style);
-        } catch (e) {
-          console.log('Could not access Wix iframe content:', e);
-        }
+      // Remove any existing font size attributes
+      document.documentElement.removeAttribute('data-font-size');
+      document.querySelectorAll('*').forEach(el => {
+        el.style.removeProperty('font-size');
       });
+      
+      // Apply new font size
+      if (newSize !== 'default') {
+        document.documentElement.setAttribute('data-font-size', newSize);
+        const sizeMap = { '1': '1.2em', '2': '1.4em', '3': '1.6em' };
+        document.querySelectorAll('*').forEach(el => {
+          if (el.tagName !== 'SCRIPT' && el.tagName !== 'STYLE') {
+            el.style.fontSize = sizeMap[newSize];
+          }
+        });
+      }
+      
+      this.setAttribute('aria-pressed', newSize !== 'default');
     });
 
     document.getElementById('daccul').addEventListener('click', function() {
@@ -1366,31 +1365,6 @@
         link.style.textDecoration = isUnderlined ? 'none' : 'underline';
       });
       this.setAttribute('aria-pressed', !isUnderlined);
-      
-      // Handle Wix iframes
-      const wixIframes = document.querySelectorAll('iframe[src*="wix.com"]');
-      wixIframes.forEach(iframe => {
-        try {
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          const iframeRoot = iframeDoc.documentElement;
-          iframeRoot.setAttribute('data-letter-spacing', spacings[nextIndex]);
-          
-          // Inject letter spacing styles into Wix iframe
-          const style = iframeDoc.createElement('style');
-          style.id = 'wcag-letter-spacing-styles';
-          style.textContent = `
-            [data-letter-spacing="1"] * { letter-spacing: 0.12em !important; }
-            [data-letter-spacing="2"] * { letter-spacing: 0.24em !important; }
-            [data-letter-spacing="3"] * { letter-spacing: 0.36em !important; }
-          `;
-          if (iframeDoc.getElementById('wcag-letter-spacing-styles')) {
-            iframeDoc.getElementById('wcag-letter-spacing-styles').remove();
-          }
-          iframeDoc.head.appendChild(style);
-        } catch (e) {
-          console.log('Could not access Wix iframe content:', e);
-        }
-      });
     });
 
     document.getElementById('daccls').addEventListener('click', function() {
@@ -1399,31 +1373,6 @@
       const nextIndex = (spacings.indexOf(currentSpacing) + 1) % spacings.length;
       document.documentElement.setAttribute('data-letter-spacing', spacings[nextIndex]);
       this.setAttribute('aria-pressed', spacings[nextIndex] !== 'default');
-      
-      // Handle Wix iframes
-      const wixIframes = document.querySelectorAll('iframe[src*="wix.com"]');
-      wixIframes.forEach(iframe => {
-        try {
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          const iframeRoot = iframeDoc.documentElement;
-          iframeRoot.setAttribute('data-letter-spacing', spacings[nextIndex]);
-          
-          // Inject letter spacing styles into Wix iframe
-          const style = iframeDoc.createElement('style');
-          style.id = 'wcag-letter-spacing-styles';
-          style.textContent = `
-            [data-letter-spacing="1"] * { letter-spacing: 0.12em !important; }
-            [data-letter-spacing="2"] * { letter-spacing: 0.24em !important; }
-            [data-letter-spacing="3"] * { letter-spacing: 0.36em !important; }
-          `;
-          if (iframeDoc.getElementById('wcag-letter-spacing-styles')) {
-            iframeDoc.getElementById('wcag-letter-spacing-styles').remove();
-          }
-          iframeDoc.head.appendChild(style);
-        } catch (e) {
-          console.log('Could not access Wix iframe content:', e);
-        }
-      });
     });
 
     document.getElementById('dacclh').addEventListener('click', function() {
@@ -1432,62 +1381,31 @@
       const nextIndex = (heights.indexOf(currentHeight) + 1) % heights.length;
       document.documentElement.setAttribute('data-line-height', heights[nextIndex]);
       this.setAttribute('aria-pressed', heights[nextIndex] !== 'default');
+    });
+
+    document.getElementById('dacctts').addEventListener('click', function() {
+      const isActive = this.getAttribute('aria-pressed') === 'true';
+      this.setAttribute('aria-pressed', !isActive);
       
-      // Handle Wix iframes
-      const wixIframes = document.querySelectorAll('iframe[src*="wix.com"]');
-      wixIframes.forEach(iframe => {
-        try {
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          const iframeRoot = iframeDoc.documentElement;
-          iframeRoot.setAttribute('data-line-height', heights[nextIndex]);
-          
-          // Inject line height styles into Wix iframe
-          const style = iframeDoc.createElement('style');
-          style.id = 'wcag-line-height-styles';
-          style.textContent = `
-            [data-line-height="1"] * { line-height: 1.5 !important; }
-            [data-line-height="2"] * { line-height: 2 !important; }
-            [data-line-height="3"] * { line-height: 2.5 !important; }
-          `;
-          if (iframeDoc.getElementById('wcag-line-height-styles')) {
-            iframeDoc.getElementById('wcag-line-height-styles').remove();
-          }
-          iframeDoc.head.appendChild(style);
-        } catch (e) {
-          console.log('Could not access Wix iframe content:', e);
-        }
-      });
+      if (!isActive) {
+        const elements = document.querySelectorAll('p, h1, h2, h3, span, li');
+        elements.forEach(el => {
+          el.style.cursor = 'pointer';
+          el.addEventListener('click', ttsClickHandler);
+        });
+      } else {
+        const elements = document.querySelectorAll('p, h1, h2, h3, span, li');
+        elements.forEach(el => {
+          el.style.cursor = '';
+          el.removeEventListener('click', ttsClickHandler);
+        });
+      }
     });
 
     document.getElementById('daccffd').addEventListener('click', function() {
       const isDyslexic = document.documentElement.getAttribute('data-dyslexic-font') === 'true';
       document.documentElement.setAttribute('data-dyslexic-font', !isDyslexic);
       this.setAttribute('aria-pressed', !isDyslexic);
-      
-      // Handle Wix iframes
-      const wixIframes = document.querySelectorAll('iframe[src*="wix.com"]');
-      wixIframes.forEach(iframe => {
-        try {
-          const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-          const iframeRoot = iframeDoc.documentElement;
-          iframeRoot.setAttribute('data-dyslexic-font', !isDyslexic);
-          
-          // Inject dyslexic font styles into Wix iframe
-          const style = iframeDoc.createElement('style');
-          style.id = 'wcag-dyslexic-font-styles';
-          style.textContent = `
-            [data-dyslexic-font="true"] * {
-              font-family: 'OpenDyslexic', Arial, sans-serif !important;
-            }
-          `;
-          if (iframeDoc.getElementById('wcag-dyslexic-font-styles')) {
-            iframeDoc.getElementById('wcag-dyslexic-font-styles').remove();
-          }
-          iframeDoc.head.appendChild(style);
-        } catch (e) {
-          console.log('Could not access Wix iframe content:', e);
-        }
-      });
     });
 
     document.getElementById('daccic').addEventListener('click', function() {
@@ -1910,48 +1828,4 @@ document.getElementById('daccsl').addEventListener('click', function() {
 function ttsClickHandler(e) {
   const msg = new SpeechSynthesisUtterance(e.currentTarget.innerText);
   window.speechSynthesis.speak(msg);
-}
-
-// Add Wix iframe observer to handle dynamically loaded content
-function observeWixIframes() {
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      mutation.addedNodes.forEach((node) => {
-        if (node.nodeName === 'IFRAME' && node.src.includes('wix.com')) {
-          // Wait for iframe to load
-          node.addEventListener('load', () => {
-            try {
-              const iframeDoc = node.contentDocument || node.contentWindow.document;
-              // Re-apply current accessibility settings to new iframe
-              const currentSettings = {
-                'data-font-size': document.documentElement.getAttribute('data-font-size'),
-                'data-letter-spacing': document.documentElement.getAttribute('data-letter-spacing'),
-                'data-line-height': document.documentElement.getAttribute('data-line-height'),
-                'data-dyslexic-font': document.documentElement.getAttribute('data-dyslexic-font')
-              };
-              
-              Object.entries(currentSettings).forEach(([attr, value]) => {
-                if (value) {
-                  iframeDoc.documentElement.setAttribute(attr, value);
-                }
-              });
-            } catch (e) {
-              console.log('Could not access new Wix iframe content:', e);
-            }
-          });
-        }
-      });
-    });
-  });
-  
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-}
-
-// Initialize Wix iframe observer when widget initializes
-function initializeWidget() {
-  // ... existing initialization code ...
-  observeWixIframes();
 }
