@@ -455,6 +455,10 @@
       return; // Widget already exists
     }
 
+    // --- Fix: Ensure panel is closed by default on all viewports ---
+    // Remove any forced open state on mobile
+    // (No code change needed here, but ensure the panel is not given the 'open' class by default)
+
     const styles = `
     #accessibility-widget {
       position: fixed;
@@ -1229,6 +1233,83 @@
     html[data-font-size="3"] li, 
     html[data-font-size="3"] td, 
     html[data-font-size="3"] th { font-size: 1.0656em !important; }
+
+    /* --- MOBILE STYLES --- */
+    @media (max-width: 600px) {
+      #accessibility-panel {
+        width: 100vw !important;
+        height: 100vh !important;
+        left: 0 !important;
+        right: 0 !important;
+        top: 0 !important;
+        border-radius: 0 !important;
+        padding: 0 8px 16px 8px !important;
+        font-size: 16px !important;
+        box-sizing: border-box;
+        transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+        transform: translateY(100%);
+      }
+      #accessibility-panel.open {
+        transform: translateY(0);
+      }
+      #accessibility-widget.left #accessibility-panel,
+      #accessibility-widget:not(.left) #accessibility-panel {
+        left: 0 !important;
+        right: 0 !important;
+        border-radius: 0 !important;
+      }
+      .profiles-grid {
+        max-height: 775px !important;
+      }
+      .section,
+      .section.accordion {
+        padding: 16px 8px !important;
+        margin-bottom: 16px !important;
+        border-radius: 10px !important;
+      }
+      .profiles-grid,
+      .settings-cards,
+      #daccbxc2,
+      #daccbxc3,
+      #daccbxc4 {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+        padding: 12px 0 !important;
+      }
+      #accessibility-panel .section:first-child {
+        margin-top: 8px !important;
+      }
+      #accessibility-btn {
+        width: 48px !important;
+        height: 48px !important;
+      }
+      .accessibility-header {
+        min-height: 56px !important;
+        height: 64px !important;
+        font-size: 16px !important;
+      }
+      .accessibility-header-title {
+        font-size: 15px !important;
+      }
+      .accessibility-close-btn {
+        width: 40px !important;
+        height: 40px !important;
+        min-width: 40px !important;
+        min-height: 40px !important;
+        max-width: 40px !important;
+        max-height: 40px !important;
+      }
+      .profile-btn,
+      #daccbxc2 button,
+      #daccbxc3 button,
+      #daccbxc4 button {
+        padding: 12px !important;
+        font-size: 15px !important;
+      }
+      .settings-card {
+        padding: 16px 8px !important;
+      }
+    }
     `;
 
     const styleSheet = document.createElement("style");
@@ -1255,10 +1336,22 @@
     
     if (document.body) {
       document.body.appendChild(container);
+      // --- Fix: Ensure panel is closed by default on all viewports ---
+      const panel = container.querySelector('#accessibility-panel');
+      if (panel) {
+        panel.classList.remove('open');
+        panel.setAttribute('aria-hidden', 'true');
+      }
       initializeWidget();
     } else {
       document.addEventListener('DOMContentLoaded', () => {
         document.body.appendChild(container);
+        // --- Fix: Ensure panel is closed by default on all viewports ---
+        const panel = container.querySelector('#accessibility-panel');
+        if (panel) {
+          panel.classList.remove('open');
+          panel.setAttribute('aria-hidden', 'true');
+        }
         initializeWidget();
       });
     }
