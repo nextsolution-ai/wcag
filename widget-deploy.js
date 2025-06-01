@@ -114,8 +114,12 @@
             <button id="daccfs" title="Font size" aria-label="Font size" type="button">
               <span><svg viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.3826 17.223H6.4879M9.43523 0.776855V17.0934M1.14746 5.27826V0.776965H17.723L17.723 5.27815M12.8021 11.2454L15.2626 8.63736M15.2626 8.63736L17.723 11.2454M15.2626 8.63736L15.2626 14.5035" stroke="var(--wcag-primary-color)" stroke-width="1.125" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
               <span>Font size</span>
+              <div class="daccdts">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
               <div data-message="Gradually increase font size on the page. Helps users with visual difficulties." class="dacctltp"><svg viewBox="0 0 2 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.357422 8.85714C0.357422 9.21218 0.645239 9.5 1.00028 9.5C1.35532 9.5 1.64314 9.21218 1.64314 8.85714V3.71429C1.64314 3.35925 1.35532 3.07143 1.00028 3.07143C0.645239 3.07143 0.357422 3.35925 0.357422 3.71429V8.85714Z" fill="white"></path><path d="M0.357422 1.14279C0.357422 1.49783 0.645239 1.78564 1.00028 1.78564C1.35532 1.78564 1.64314 1.49783 1.64314 1.14279C1.64314 0.787747 1.35532 0.49993 1.00028 0.49993C0.645239 0.49993 0.357422 0.787747 0.357422 1.14279Z" fill="white"></path></svg></div>
-              <div class="daccdts"><span></span><span></span><span></span></div>
             </button>
             <button id="daccul" title="Underline links" aria-label="Underline links" type="button">
               <span><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.947 12.8202H6.05235M8.99966 0.776855V12.6905M17.2875 17.2231H0.711914M0.711916 5.27815V0.776855H17.2875L17.2874 5.27815" stroke="var(--wcag-primary-color)" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
@@ -125,14 +129,22 @@
             <button id="daccls" title="Letter spacing" aria-label="Letter spacing" type="button">
               <span><svg viewBox="0 0 26 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.699219 16.8639L7.6633 1.13232L13.9317 16.8639M12.7408 13.9187H2.71056M23.5159 16.4291H19.5499C18.5366 16.4291 17.754 15.5444 17.875 14.5388L17.9355 14.0359C18.0376 13.189 18.7559 12.5539 19.6104 12.5539H23.5159M18.2115 9.06805C18.7181 8.76559 19.3004 8.6068 19.8977 8.6068H20.9525C22.3741 8.6068 23.5272 9.75992 23.5272 11.1815V16.4556L25.3004 16.8677" stroke="var(--wcag-primary-color)" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
               <span>Letter spacing</span>
+              <div class="daccdts">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
               <div data-message="Gradually increase letter spacing on the page. Helps users with visual difficulties." class="dacctltp"><svg viewBox="0 0 2 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.357422 8.85714C0.357422 9.21218 0.645239 9.5 1.00028 9.5C1.35532 9.5 1.64314 9.21218 1.64314 8.85714V3.71429C1.64314 3.35925 1.35532 3.07143 1.00028 3.07143C0.645239 3.07143 0.357422 3.35925 0.357422 3.71429V8.85714Z" fill="white"></path><path d="M0.357422 1.14279C0.357422 1.49783 0.645239 1.78564 1.00028 1.78564C1.35532 1.78564 1.64314 1.49783 1.64314 1.14279C1.64314 0.787747 1.35532 0.49993 1.00028 0.49993C0.645239 0.49993 0.357422 0.787747 0.357422 1.14279Z" fill="white"></path></svg></div>
-              <div class="daccdts"><span></span><span></span><span></span></div>
             </button>
             <button id="dacclh" title="Line height" aria-label="Line height" type="button">
               <span><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.652344 11.739H9.26104M13.9384 11.739H17.348M0.652344 17.2174H3.58974M8.39233 17.2174H17.348M0.652344 0.782471H17.348V6.26073H0.652344V0.782471Z" stroke="var(--wcag-primary-color)" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
               <span>Line height</span>
+              <div class="daccdts">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
               <div data-message="Gradually increase line height on the page. Helps users with visual difficulties." class="dacctltp"><svg viewBox="0 0 2 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.357422 8.85714C0.357422 9.21218 0.645239 9.5 1.00028 9.5C1.35532 9.5 1.64314 9.21218 1.64314 8.85714V3.71429C1.64314 3.35925 1.35532 3.07143 1.00028 3.07143C0.645239 3.07143 0.357422 3.35925 0.357422 3.71429V8.85714Z" fill="white"></path><path d="M0.357422 1.14279C0.357422 1.49783 0.645239 1.78564 1.00028 1.78564C1.35532 1.78564 1.64314 1.49783 1.64314 1.14279C1.64314 0.787747 1.35532 0.49993 1.00028 0.49993C0.645239 0.49993 0.357422 0.787747 0.357422 1.14279Z" fill="white"></path></svg></div>
-              <div class="daccdts"><span></span><span></span><span></span></div>
             </button>
             <button id="dacctts" title="Text to speech" aria-label="Text to speech" type="button">
               <span><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.69034 11.5355H2.14463C1.38606 11.5355 0.771484 10.9209 0.771484 10.1623V7.84034C0.771484 7.08177 1.38606 6.4672 2.14463 6.4672H4.69034V11.5381V11.5355ZM4.69034 11.5355L17.2286 17.2286V0.771484L4.69034 6.46463L4.69034 11.5355ZM5.20206 11.7669L4.88577 13.4795C4.77006 14.1043 5.08377 14.7266 5.65463 15.0069L8.1952 16.2566C8.8252 16.5652 9.58634 16.3698 9.98491 15.7912L10.9621 14.3795" stroke="var(--wcag-primary-color)" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
@@ -374,15 +386,11 @@
     const contentLabels = [t.fontSize, t.underlineLinks, t.letterSpacing, t.lineHeight, t.textToSpeech];
     contentBtns.forEach((btn, i) => {
       if (btn) {
-        // Remove all label spans except the icon (first span)
+        // Only update the label span (the second span), do not remove .daccdts or other elements
         const spans = btn.querySelectorAll('span');
-        for (let j = spans.length - 1; j > 0; j--) {
-          spans[j].remove();
+        if (spans.length > 1) {
+          spans[1].textContent = contentLabels[i];
         }
-        // Add the correct label
-        const labelSpan = document.createElement('span');
-        labelSpan.textContent = contentLabels[i];
-        btn.appendChild(labelSpan);
       }
     });
     
@@ -908,16 +916,21 @@
 
     #daccbxc2 .daccdts {
       display: flex;
-      gap: 4px;
-      margin-top: 12px;
+      gap: 6px;
+      justify-content: center;
+      margin-top: 8px;
     }
 
-    #daccbxc2 .daccdts span {
-      width: 4px;
-      height: 4px;
-      background: var(--wcag-primary-color);
+    #daccbxc2 .daccdts .dot {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      margin: 0;
+      background: #d3d6e0;
+      transition: background 0.2s;
+    }
+
+    #daccbxc2 .daccdts .dot.active {
+      background: #0033cc;
     }
 
     /* Color section styles */
@@ -1373,6 +1386,16 @@
         });
       }
       
+      // Update the dots
+      const dots = this.querySelectorAll('.daccdts .dot');
+      dots.forEach((dot, idx) => {
+        if (idx === (newSize === 'default' ? -1 : parseInt(newSize, 10) - 1)) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+
       this.setAttribute('aria-pressed', newSize !== 'default');
     });
 
@@ -1389,16 +1412,36 @@
       const currentSpacing = document.documentElement.getAttribute('data-letter-spacing') || 'default';
       const spacings = ['default', '1', '2', '3'];
       const nextIndex = (spacings.indexOf(currentSpacing) + 1) % spacings.length;
-      document.documentElement.setAttribute('data-letter-spacing', spacings[nextIndex]);
-      this.setAttribute('aria-pressed', spacings[nextIndex] !== 'default');
+      const newSpacing = spacings[nextIndex];
+      document.documentElement.setAttribute('data-letter-spacing', newSpacing);
+      this.setAttribute('aria-pressed', newSpacing !== 'default');
+      // Update the dots
+      const dots = this.querySelectorAll('.daccdts .dot');
+      dots.forEach((dot, idx) => {
+        if (idx === (newSpacing === 'default' ? -1 : parseInt(newSpacing, 10) - 1)) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
     });
 
     document.getElementById('dacclh').addEventListener('click', function() {
       const currentHeight = document.documentElement.getAttribute('data-line-height') || 'default';
       const heights = ['default', '1', '2', '3'];
       const nextIndex = (heights.indexOf(currentHeight) + 1) % heights.length;
-      document.documentElement.setAttribute('data-line-height', heights[nextIndex]);
-      this.setAttribute('aria-pressed', heights[nextIndex] !== 'default');
+      const newHeight = heights[nextIndex];
+      document.documentElement.setAttribute('data-line-height', newHeight);
+      this.setAttribute('aria-pressed', newHeight !== 'default');
+      // Update the dots
+      const dots = this.querySelectorAll('.daccdts .dot');
+      dots.forEach((dot, idx) => {
+        if (idx === (newHeight === 'default' ? -1 : parseInt(newHeight, 10) - 1)) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
     });
 
     document.getElementById('dacctts').addEventListener('click', function() {
