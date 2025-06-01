@@ -178,8 +178,12 @@
             <button id="daccsat" title="Saturation" aria-label="Saturation" type="button">
               <span><svg viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.00012 0.770996L3.17869 5.59242C0.51726 8.25385 0.51726 12.5687 3.17869 15.2327H3.18126C5.84269 17.8941 10.1601 17.8941 12.8215 15.2327C15.483 12.5713 15.483 8.25385 12.8215 5.59242C11.2864 4.05728 8.00012 0.770996 8.00012 0.770996ZM8.00012 0.770996L8.00012 17.2281" stroke="var(--wcag-primary-color)" stroke-width="1.13" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
               <span>Saturation</span>
+              <div class="daccdts">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
               <div data-message="Change the color saturation on the page, reducing intensity with the first click, then increasing it with the second. The third click removes saturation completely, transitioning to grayscale for better readability and reduced visual strain." class="dacctltp"><svg viewBox="0 0 2 10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.357422 8.85714C0.357422 9.21218 0.645239 9.5 1.00028 9.5C1.35532 9.5 1.64314 9.21218 1.64314 8.85714V3.71429C1.64314 3.35925 1.35532 3.07143 1.00028 3.07143C0.645239 3.07143 0.357422 3.35925 0.357422 3.71429V8.85714Z" fill="white"></path><path d="M0.357422 1.14279C0.357422 1.49783 0.645239 1.78564 1.00028 1.78564C1.35532 1.78564 1.64314 1.49783 1.64314 1.14279C1.64314 0.787747 1.35532 0.49993 1.00028 0.49993C0.645239 0.49993 0.357422 0.787747 0.357422 1.14279Z" fill="white"></path></svg></div>
-              <div class="daccdts"><span></span><span></span><span></span></div>
             </button>
           </div>
         </div>
@@ -1259,7 +1263,7 @@
         border-radius: 0 !important;
       }
       .profiles-grid {
-        max-height: 775px !important;
+        max-height: 785px !important;
       }
       .section,
       .section.accordion {
@@ -1580,6 +1584,15 @@
       const nextIndex = (saturations.indexOf(currentSaturation) + 1) % saturations.length;
       document.documentElement.setAttribute('data-saturation', saturations[nextIndex]);
       this.setAttribute('aria-pressed', saturations[nextIndex] !== 'default');
+      // Update the dots
+      const dots = this.querySelectorAll('.daccdts .dot');
+      dots.forEach((dot, idx) => {
+        if (idx === (saturations[nextIndex] === 'default' ? -1 : parseInt(saturations[nextIndex], 10) - 1)) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
     });
 
     document.getElementById('daccda').addEventListener('click', function() {
