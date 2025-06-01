@@ -404,15 +404,11 @@
     const colorLabels = [t.invertColors, t.contrast, t.saturation];
     colorBtns.forEach((btn, i) => {
       if (btn) {
-        // Remove all label spans except the icon (first span)
+        // Only update the label span (the second span), do not remove .daccdts or other elements
         const spans = btn.querySelectorAll('span');
-        for (let j = spans.length - 1; j > 0; j--) {
-          spans[j].remove();
+        if (spans.length > 1) {
+          spans[1].textContent = colorLabels[i];
         }
-        // Add the correct label
-        const labelSpan = document.createElement('span');
-        labelSpan.textContent = colorLabels[i];
-        btn.appendChild(labelSpan);
       }
     });
     
@@ -1314,6 +1310,21 @@
         padding: 16px 8px !important;
       }
     }
+    
+    #daccbxc3 .daccdts .dot,
+    #daccbxc4 .daccdts .dot {
+      width: 8px !important;
+      height: 8px !important;
+      background: #d3d6e0 !important;
+      border-radius: 50% !important;
+      margin: 0 !important;
+      transition: background 0.2s !important;
+      display: inline-block !important;
+    }
+    #daccbxc3 .daccdts .dot.active,
+    #daccbxc4 .daccdts .dot.active {
+      background: #0033cc !important;
+    }
     `;
 
     const styleSheet = document.createElement("style");
@@ -1582,12 +1593,13 @@
       const currentSaturation = document.documentElement.getAttribute('data-saturation') || 'default';
       const saturations = ['default', '1', '2', '3'];
       const nextIndex = (saturations.indexOf(currentSaturation) + 1) % saturations.length;
-      document.documentElement.setAttribute('data-saturation', saturations[nextIndex]);
-      this.setAttribute('aria-pressed', saturations[nextIndex] !== 'default');
+      const newSaturation = saturations[nextIndex];
+      document.documentElement.setAttribute('data-saturation', newSaturation);
+      this.setAttribute('aria-pressed', newSaturation !== 'default');
       // Update the dots
       const dots = this.querySelectorAll('.daccdts .dot');
       dots.forEach((dot, idx) => {
-        if (idx === (saturations[nextIndex] === 'default' ? -1 : parseInt(saturations[nextIndex], 10) - 1)) {
+        if (idx === (newSaturation === 'default' ? -1 : parseInt(newSaturation, 10) - 1)) {
           dot.classList.add('active');
         } else {
           dot.classList.remove('active');
