@@ -1193,12 +1193,29 @@
       text-decoration: underline;
       color: #b3c6ff;
     }
-    html[data-font-size="1"] { font-size: 1.1em !important; }
-    html[data-font-size="1"] * { font-size: 1.1em !important; }
-    html[data-font-size="2"] { font-size: 1.2em !important; }
-    html[data-font-size="2"] * { font-size: 1.2em !important; }
-    html[data-font-size="3"] { font-size: 1.3em !important; }
-    html[data-font-size="3"] * { font-size: 1.3em !important; }
+    html[data-font-size="1"] { font-size: 1.4167em !important; }
+    html[data-font-size="1"] p, 
+    html[data-font-size="1"] span, 
+    html[data-font-size="1"] div, 
+    html[data-font-size="1"] li, 
+    html[data-font-size="1"] td, 
+    html[data-font-size="1"] th { font-size: 1.4167em !important; }
+    
+    html[data-font-size="2"] { font-size: 1.5em !important; }
+    html[data-font-size="2"] p, 
+    html[data-font-size="2"] span, 
+    html[data-font-size="2"] div, 
+    html[data-font-size="2"] li, 
+    html[data-font-size="2"] td, 
+    html[data-font-size="2"] th { font-size: 1.5em !important; }
+    
+    html[data-font-size="3"] { font-size: 1.5833em !important; }
+    html[data-font-size="3"] p, 
+    html[data-font-size="3"] span, 
+    html[data-font-size="3"] div, 
+    html[data-font-size="3"] li, 
+    html[data-font-size="3"] td, 
+    html[data-font-size="3"] th { font-size: 1.5833em !important; }
     `;
 
     const styleSheet = document.createElement("style");
@@ -1347,7 +1364,7 @@
       // Apply new font size
       if (newSize !== 'default') {
         document.documentElement.setAttribute('data-font-size', newSize);
-        const sizeMap = { '1': '1.1em', '2': '1.2em', '3': '1.3em' };
+        const sizeMap = { '1': '1.4167em', '2': '1.5em', '3': '1.5833em' };
         document.querySelectorAll('p, span, div, li, td, th').forEach(el => {
           // Skip elements that are part of the accessibility widget
           if (!el.closest('#accessibility-widget')) {
@@ -1691,9 +1708,29 @@
     html[data-saturation="2"] { filter: saturate(200%) !important; }
     html[data-saturation="3"] { filter: grayscale(100%) !important; }
 
-    html[data-font-size="1"] { font-size: 1.1em !important; }
-    html[data-font-size="2"] { font-size: 1.2em !important; }
-    html[data-font-size="3"] { font-size: 1.3em !important; }
+    html[data-font-size="1"] { font-size: 1.4167em !important; }
+    html[data-font-size="1"] p, 
+    html[data-font-size="1"] span, 
+    html[data-font-size="1"] div, 
+    html[data-font-size="1"] li, 
+    html[data-font-size="1"] td, 
+    html[data-font-size="1"] th { font-size: 1.4167em !important; }
+    
+    html[data-font-size="2"] { font-size: 1.5em !important; }
+    html[data-font-size="2"] p, 
+    html[data-font-size="2"] span, 
+    html[data-font-size="2"] div, 
+    html[data-font-size="2"] li, 
+    html[data-font-size="2"] td, 
+    html[data-font-size="2"] th { font-size: 1.5em !important; }
+    
+    html[data-font-size="3"] { font-size: 1.5833em !important; }
+    html[data-font-size="3"] p, 
+    html[data-font-size="3"] span, 
+    html[data-font-size="3"] div, 
+    html[data-font-size="3"] li, 
+    html[data-font-size="3"] td, 
+    html[data-font-size="3"] th { font-size: 1.5833em !important; }
 
     html[data-letter-spacing="1"] { letter-spacing: 0.12em !important; }
     html[data-letter-spacing="2"] { letter-spacing: 0.24em !important; }
