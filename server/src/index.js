@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
-const licenseRoutes = require('./routes/licenses');
+const licenseRoutes = require('./routes/license');
 const usageRoutes = require('./routes/usage');
 
 const app = express();
