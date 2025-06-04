@@ -1238,7 +1238,7 @@
     @media (max-width: 600px) {
       #accessibility-panel {
         width: 100vw !important;
-        height: 100vh !important;
+        height: 100dvh !important;
         left: 0 !important;
         right: 0 !important;
         top: 0 !important;
@@ -1248,6 +1248,8 @@
         box-sizing: border-box;
         transition: transform 0.3s cubic-bezier(.4,0,.2,1);
         transform: translateY(100%);
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important;
       }
       #accessibility-panel.open {
         transform: translateY(0);
@@ -1399,11 +1401,17 @@
       panel.classList.toggle('open');
       const isOpen = panel.classList.contains('open');
       panel.setAttribute('aria-hidden', !isOpen);
+      if (isOpen && window.innerWidth <= 600) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
     });
 
     closeBtn.addEventListener('click', () => {
       panel.classList.remove('open');
       panel.setAttribute('aria-hidden', true);
+      document.body.style.overflow = '';
     });
 
     // Accordion functionality
@@ -1683,11 +1691,12 @@
     // Add language change event listener
     const languageSelect = document.getElementById('language-select');
     if (languageSelect) {
+      languageSelect.value = 'sv'; // Set Swedish as default
       languageSelect.addEventListener('change', function() {
         setLanguage(this.value);
       });
-      // Set initial language
-      setLanguage(languageSelect.value);
+      // Set initial language to Swedish
+      setLanguage('sv');
     }
   }
 
