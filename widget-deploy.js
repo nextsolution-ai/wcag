@@ -1,57 +1,71 @@
 // License validation
 function validateLicense() {
-  const config = window.ACCESSIBILITY_CONFIG || {};
-  const licenseKey = config.licenseKey;
-  const domain = config.domain || window.location.hostname;
+  return new Promise((resolve) => {
+    const config = window.ACCESSIBILITY_CONFIG || {};
+    const licenseKey = config.licenseKey;
+    const domain = config.domain || window.location.hostname;
 
-  if (!licenseKey) {
-    console.error('Accessibility widget: No license key provided');
-    return false;
-  }
-
-  if (!/^[0-9a-f]{32}$/.test(licenseKey)) {
-    console.error('Accessibility widget: Invalid license key format');
-    return false;
-  }
-
-  if (!domain) {
-    console.error('Accessibility widget: No domain provided');
-    return false;
-  }
-
-  // Synchronous check for now, but we need to make this async
-  // We'll block initialization until the API call completes
-  const apiUrl = 'https://wcag-g2za.onrender.com/api/licenses/verify';
-  const xhr = new XMLHttpRequest();
-
-  // Using a synchronous request (false as the third argument) - consider making this asynchronous
-  xhr.open('POST', apiUrl, false);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-
-  try {
-    const requestBody = JSON.stringify({
-      licenseKey: licenseKey,
-      domain: domain
-    });
-    xhr.send(requestBody);
-
-    if (xhr.status === 200) {
-      const response = JSON.parse(xhr.responseText);
-      if (response.valid) {
-        console.log('Accessibility widget: License validated successfully.');
-        return true;
-      } else {
-        console.error('Accessibility widget: License validation failed:', response.message || 'Invalid license');
-        return false;
-      }
-    } else {
-      console.error('Accessibility widget: License validation API error. Status:', xhr.status, 'Response:', xhr.responseText);
-      return false;
+    if (!licenseKey) {
+      console.error('Accessibility widget: No license key provided');
+      resolve(false);
+      return;
     }
-  } catch (e) {
-    console.error('Accessibility widget: License validation request failed:', e);
-    return false;
-  }
+
+    if (!/^[0-9a-f]{32}$/.test(licenseKey)) {
+      console.error('Accessibility widget: Invalid license key format');
+      resolve(false);
+      return;
+    }
+
+    if (!domain) {
+      console.error('Accessibility widget: No domain provided');
+      resolve(false);
+      return;
+    }
+
+    const apiUrl = 'https://wcag-g2za.onrender.com/api/licenses/verify';
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('POST', apiUrl, true); // true makes it asynchronous
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        try {
+          const response = JSON.parse(xhr.responseText);
+          if (response.valid) {
+            console.log('Accessibility widget: License validated successfully.');
+            resolve(true);
+          } else {
+            console.error('Accessibility widget: License validation failed:', response.message || 'Invalid license');
+            resolve(false);
+          }
+        } catch (e) {
+          console.error('Accessibility widget: Failed to parse validation response:', e);
+          resolve(false);
+        }
+      } else {
+        console.error('Accessibility widget: License validation API error. Status:', xhr.status, 'Response:', xhr.responseText);
+        resolve(false);
+      }
+    };
+
+    xhr.onerror = function() {
+      console.error('Accessibility widget: License validation request failed.');
+      resolve(false);
+    };
+
+    try {
+      const requestBody = JSON.stringify({
+        licenseKey: licenseKey,
+        domain: domain
+      });
+      xhr.send(requestBody);
+    } catch (e) {
+      console.error('Accessibility widget: Failed to send validation request:', e);
+      resolve(false);
+    }
+  });
 }
 
 (function() {
@@ -1921,11 +1935,22 @@ function validateLicense() {
   }
 
   // Call init when script loads
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  // Modified to use async validation
+  (async function() {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', async () => {
+        const isLicenseValid = await validateLicense();
+        if (isLicenseValid) {
+          init();
+        }
+      });
+    } else {
+      const isLicenseValid = await validateLicense();
+      if (isLicenseValid) {
+        init();
+      }
+    }
+  })();
 })(); 
 
 // Inject CSS for accessibility features
