@@ -48,7 +48,12 @@
     <pre><code>&lt;script src="https://nextsolution-ai.github.io/wcag/widget-deploy.min.js"&gt;&lt;/script&gt;</code></pre>
   </div>
 
-  <!-- Load the accessibility widget -->
-  <script src="widget-deploy.js"></script>
+  <script>
+    window.ACCESSIBILITY_CONFIG = {
+      licenseKey: '0974d8c754cf9ec5481e271ca8d7c2f6',
+      domain: 'naarmi-bd.myshopify.com'
+    };
+  </script>
+  <script src="widget-deploy.min.js"></script>
 </body>
 </html>
