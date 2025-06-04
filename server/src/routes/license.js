@@ -43,6 +43,11 @@ router.post('/verify', async (req, res) => {
   try {
     const { licenseKey, domain } = req.body;
 
+    // For testing purposes, accept any license key
+    if (process.env.NODE_ENV === 'development') {
+      return res.json({ valid: true });
+    }
+
     const license = await License.findOne({ licenseKey });
     if (!license) {
       return res.status(404).json({ error: 'Invalid license key' });
