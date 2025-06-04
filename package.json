@@ -1,0 +1,19 @@
+{
+  "name": "wcag-widget",
+  "version": "1.0.0",
+  "description": "WCAG Accessibility Widget",
+  "scripts": {
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "accessibility",
+    "wcag",
+    "widget"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "terser": "^5.14.2"
+  }
+}
