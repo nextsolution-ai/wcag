@@ -1410,19 +1410,6 @@ function validateLicense() {
     #daccbxc4 .daccdts .dot.active {
       background: #0033cc !important;
     }
-    html[data-letter-spacing="1"] * { letter-spacing: 0.12em !important; }
-    html[data-letter-spacing="2"] * { letter-spacing: 0.24em !important; }
-    html[data-letter-spacing="3"] * { letter-spacing: 0.36em !important; }
-
-    /* Reset letter spacing for specific elements */
-    html[data-letter-spacing="1"] input,
-    html[data-letter-spacing="1"] textarea,
-    html[data-letter-spacing="2"] input,
-    html[data-letter-spacing="2"] textarea,
-    html[data-letter-spacing="3"] input,
-    html[data-letter-spacing="3"] textarea {
-      letter-spacing: normal !important;
-    }
     `;
 
     const styleSheet = document.createElement("style");
