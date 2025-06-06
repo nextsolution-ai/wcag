@@ -31,13 +31,13 @@ router.post('/register', async (req, res) => {
     // Generate token
     const token = jwt.sign(
       { userId: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: '24h' }
+      process.env.JWT_SECRET
     );
 
     res.status(201).json({ token });
   } catch (error) {
-    res.status(500).json({ error: 'Error creating user' });
+    console.error('Registration error:', error);
+    res.status(500).json({ error: 'Error creating user', details: error.message });
   }
 });
 
@@ -61,8 +61,7 @@ router.post('/login', async (req, res) => {
     // Generate token
     const token = jwt.sign(
       { userId: user._id },
-      process.env.JWT_SECRET,
-      { expiresIn: '24h' }
+      process.env.JWT_SECRET
     );
 
     res.json({ token });
