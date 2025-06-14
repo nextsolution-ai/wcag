@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WCAG Widget Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 2em 0;
+            padding: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .test-image {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>WCAG Widget Test Page</h1>
+    
+    <div class="test-section">
+        <h2>Text Content</h2>
+        <p>This is a test paragraph with some <a href="#">links</a> to test the underline feature.</p>
+        <p>Another paragraph with more text to test the font size and line height features.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>Images</h2>
+        <img src="https://picsum.photos/400/300" alt="Test image" class="test-image">
+    </div>
+
+    <div class="test-section">
+        <h2>Interactive Elements</h2>
+        <button>Test Button</button>
+        <input type="text" placeholder="Test input">
+        <label for="test-select">Test Select:</label>
+        <select id="test-select" aria-label="Test select options">
+            <option>Option 1</option>
+            <option>Option 2</option>
+        </select>
+    </div>
+
+    <!-- Widget Configuration -->
+    <script>
+        window.ACCESSIBILITY_CONFIG = {
+            licenseKey: '3de6dc5581e2b22c20409bb2f1b947aa'
+        };
+    </script>
+    
+    <!-- Load the widget -->
+    <script src="dist/loader.6fe6055abc7952e95f87.js"></script> 
+</body>
+</html> 
