@@ -302,15 +302,7 @@
 
     <script>
         // API URL configuration
-        const API_URLS = {
-            production: 'https://wcag-g2za.onrender.com/api',
-            development: 'http://localhost:3000/api'
-        };
-        
-        // Determine which URL to use based on the current environment
-        const API_BASE_URL = window.location.hostname === 'localhost' 
-            ? API_URLS.development 
-            : API_URLS.production;
+        const API_BASE_URL = 'https://wcag-g2za.onrender.com/api';
 
         let token = localStorage.getItem('token') || '';
         
@@ -341,9 +333,7 @@
                 const response = await fetch(url, {
                     method,
                     headers,
-                    body: body ? JSON.stringify(body) : null,
-                    mode: 'cors',
-                    credentials: 'same-origin'
+                    body: body ? JSON.stringify(body) : null
                 });
 
                 const data = await response.json();

@@ -7,18 +7,8 @@ const authRoutes = require('./src/routes/auth');
 
 const app = express();
 
-// CORS configuration
-const corsOptions = {
-    origin: 'https://nextsolution-ai.github.io',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    preflightContinue: false,
-    optionsSuccessStatus: 204
-};
-
 // Middleware
-app.use(cors(corsOptions));
+app.use(cors());  // Allow all origins
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
