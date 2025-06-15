@@ -342,7 +342,8 @@
                     method,
                     headers,
                     body: body ? JSON.stringify(body) : null,
-                    credentials: 'include' // Include credentials for CORS
+                    mode: 'cors',
+                    credentials: 'same-origin'
                 });
 
                 const data = await response.json();

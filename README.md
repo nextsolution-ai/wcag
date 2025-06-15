@@ -23,7 +23,12 @@ A modern, customizable accessibility widget that helps make websites more access
 Add the following script to your HTML file before the closing `</body>` tag:
 
 ```html
-<script src="https://nextsolution-ai.github.io/wcag/widget-deploy.min.js"></script>
+  <script>
+    window.ACCESSIBILITY_CONFIG = {
+      licenseKey: 'licensekey'
+    };
+  </script>
+  <script src="dist/loader.6fe6055abc7952e95f87.js"></script> 
 ```
 
 ## Usage
@@ -54,11 +59,3 @@ The widget can be customized by modifying the CSS variables in your stylesheet:
 - Firefox (latest)
 - Safari (latest)
 - Edge (latest)
-
-## License
-
-MIT License - feel free to use this widget in your projects.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request. 
