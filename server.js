@@ -30,7 +30,7 @@ app.use('/api/auth', authRoutes);
 
 // Serve static files
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'test.html'));
+    res.sendFile(path.join(__dirname, 'server/public/index.html'));
 });
 
 // Error handling middleware
