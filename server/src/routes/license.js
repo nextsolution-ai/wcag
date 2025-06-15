@@ -251,4 +251,45 @@ router.delete('/:licenseKey', auth, async (req, res) => {
   }
 });
 
+// Add domain to license
+router.post('/:licenseKey/domains', auth, async (req, res) => {
+  try {
+    const { domain } = req.body;
+    
+    if (!domain) {
+      return res.status(400).json({ error: 'Domain is required' });
+    }
+
+    const license = await License.findOne({ licenseKey: req.params.licenseKey });
+    if (!license) {
+      return res.status(404).json({ error: 'License not found' });
+    }
+
+    // Check if domain already exists
+    const normalizedDomain = domain.toLowerCase().trim();
+    const normalizedDomains = license.domains.map(d => d.toLowerCase().trim());
+    
+    if (normalizedDomains.includes(normalizedDomain)) {
+      return res.status(400).json({ error: 'Domain already exists for this license' });
+    }
+
+    // Add the new domain
+    license.domains.push(domain);
+    await license.save();
+
+    res.json({ 
+      message: 'Domain added successfully',
+      license: {
+        licenseKey: license.licenseKey,
+        email: license.email,
+        domains: license.domains,
+        status: license.status
+      }
+    });
+  } catch (error) {
+    console.error('Domain addition error:', error);
+    res.status(500).json({ error: 'Error adding domain' });
+  }
+});
+
 module.exports = router; 

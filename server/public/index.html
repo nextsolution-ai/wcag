@@ -256,6 +256,26 @@
                         <div class="description">Delete a license by its key</div>
                     </div>
                 </div>
+
+                <!-- Add Domain to License -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Add Domain to License</h3>
+                    <div>
+                        <label for="addDomainLicenseKey" class="block text-sm font-medium text-gray-700">License Key</label>
+                        <input type="text" id="addDomainLicenseKey" name="addDomainLicenseKey" aria-label="License key to add domain" placeholder="Enter license key" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="addDomainName" class="block text-sm font-medium text-gray-700">Domain</label>
+                        <input type="text" id="addDomainName" name="addDomainName" aria-label="Domain to add" placeholder="Enter domain" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="addDomainToLicense()" class="w-full bg-purple-500 text-white py-2 px-4 rounded-md hover:bg-purple-600 transition-colors">
+                        Add Domain
+                    </button>
+                    <div class="api-call">
+                        <span class="method">POST</span> <span class="endpoint">/api/licenses/:licenseKey/domains</span>
+                        <div class="description">Add a domain to an existing license</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -422,6 +442,12 @@
         async function deleteUser() {
             const userId = document.getElementById('deleteUserId').value;
             await makeRequest(`${API_BASE_URL}/auth/users/${userId}`, 'DELETE');
+        }
+
+        async function addDomainToLicense() {
+            const licenseKey = document.getElementById('addDomainLicenseKey').value;
+            const domain = document.getElementById('addDomainName').value;
+            await makeRequest(`${API_BASE_URL}/licenses/${licenseKey}/domains`, 'POST', { domain });
         }
     </script>
 </body>
