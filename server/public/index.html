@@ -276,6 +276,26 @@
                         <div class="description">Add a domain to an existing license</div>
                     </div>
                 </div>
+
+                <!-- Remove Domain from License -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Remove Domain from License</h3>
+                    <div>
+                        <label for="removeDomainLicenseKey" class="block text-sm font-medium text-gray-700">License Key</label>
+                        <input type="text" id="removeDomainLicenseKey" name="removeDomainLicenseKey" aria-label="License key to remove domain" placeholder="Enter license key" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="removeDomainName" class="block text-sm font-medium text-gray-700">Domain</label>
+                        <input type="text" id="removeDomainName" name="removeDomainName" aria-label="Domain to remove" placeholder="Enter domain" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="removeDomainFromLicense()" class="w-full bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600 transition-colors">
+                        Remove Domain
+                    </button>
+                    <div class="api-call">
+                        <span class="method">DELETE</span> <span class="endpoint">/api/licenses/:licenseKey/domains</span>
+                        <div class="description">Remove a domain from an existing license</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -448,6 +468,12 @@
             const licenseKey = document.getElementById('addDomainLicenseKey').value;
             const domain = document.getElementById('addDomainName').value;
             await makeRequest(`${API_BASE_URL}/licenses/${licenseKey}/domains`, 'POST', { domain });
+        }
+
+        async function removeDomainFromLicense() {
+            const licenseKey = document.getElementById('removeDomainLicenseKey').value;
+            const domain = document.getElementById('removeDomainName').value;
+            await makeRequest(`${API_BASE_URL}/licenses/${licenseKey}/domains`, 'DELETE', { domain });
         }
     </script>
 </body>

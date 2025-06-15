@@ -292,4 +292,47 @@ router.post('/:licenseKey/domains', auth, async (req, res) => {
   }
 });
 
+// Delete domain from license
+router.delete('/:licenseKey/domains', auth, async (req, res) => {
+  try {
+    const { domain } = req.body;
+    
+    if (!domain) {
+      return res.status(400).json({ error: 'Domain is required' });
+    }
+
+    const license = await License.findOne({ licenseKey: req.params.licenseKey });
+    if (!license) {
+      return res.status(404).json({ error: 'License not found' });
+    }
+
+    // Normalize domain for comparison
+    const normalizedDomain = domain.toLowerCase().trim();
+    const normalizedDomains = license.domains.map(d => d.toLowerCase().trim());
+    
+    // Find the index of the domain to remove
+    const domainIndex = normalizedDomains.indexOf(normalizedDomain);
+    if (domainIndex === -1) {
+      return res.status(404).json({ error: 'Domain not found in license' });
+    }
+
+    // Remove the domain
+    license.domains.splice(domainIndex, 1);
+    await license.save();
+
+    res.json({ 
+      message: 'Domain removed successfully',
+      license: {
+        licenseKey: license.licenseKey,
+        email: license.email,
+        domains: license.domains,
+        status: license.status
+      }
+    });
+  } catch (error) {
+    console.error('Domain removal error:', error);
+    res.status(500).json({ error: 'Error removing domain' });
+  }
+});
+
 module.exports = router; 
