@@ -301,10 +301,19 @@
     </div>
 
     <script>
-        const API_BASE_URL = 'http://localhost:3000/api';
-        let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODQzMWM0ZTllODdkMWZhMTM0ZGViN2QiLCJpYXQiOjE3NDkyMjg2MjJ9.oSYfusZYLvEsdOhZ2N3863zaTQB1zN9yKKioJjbTeOk';
-        localStorage.setItem('token', token);
+        // API URL configuration
+        const API_URLS = {
+            production: 'https://wcag-g2za.onrender.com/api',
+            development: 'http://localhost:3000/api'
+        };
+        
+        // Determine which URL to use based on the current environment
+        const API_BASE_URL = window.location.hostname === 'localhost' 
+            ? API_URLS.development 
+            : API_URLS.production;
 
+        let token = localStorage.getItem('token') || '';
+        
         function showLoading() {
             document.getElementById('loading').style.display = 'block';
         }
