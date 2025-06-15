@@ -7,8 +7,20 @@ const authRoutes = require('./server/src/routes/auth');
 
 const app = express();
 
+// CORS configuration
+const corsOptions = {
+    origin: [
+        'https://nextsolution-ai.github.io',
+        'http://localhost:3000',
+        'http://localhost:5000'
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.static('.'));
 

@@ -332,6 +332,8 @@
                 const headers = {
                     'Content-Type': 'application/json'
                 };
+                
+                // Only add Authorization header if we have a token
                 if (token) {
                     headers['Authorization'] = `Bearer ${token}`;
                 }
@@ -339,13 +341,24 @@
                 const response = await fetch(url, {
                     method,
                     headers,
-                    body: body ? JSON.stringify(body) : null
+                    body: body ? JSON.stringify(body) : null,
+                    credentials: 'include' // Include credentials for CORS
                 });
 
                 const data = await response.json();
+                
+                // If we get an authentication error, clear the token
+                if (response.status === 401) {
+                    token = '';
+                    localStorage.removeItem('token');
+                    showResponse({ error: 'Authentication failed. Please login again.' });
+                    return;
+                }
+
                 if (!response.ok) {
                     throw new Error(data.error || 'Something went wrong');
                 }
+                
                 showResponse(data);
                 return data;
             } catch (error) {
@@ -362,6 +375,7 @@
             if (data.token) {
                 token = data.token;
                 localStorage.setItem('token', token);
+                showResponse({ message: 'Login successful', token });
             }
         }
 
