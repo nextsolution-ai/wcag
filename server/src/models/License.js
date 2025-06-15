@@ -11,6 +11,11 @@ const licenseSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  email: {
+    type: String,
+    required: true,
+    trim: true
+  },
   domains: [{
     type: String,
     trim: true
@@ -19,6 +24,10 @@ const licenseSchema = new mongoose.Schema({
     type: String,
     enum: ['active', 'inactive', 'expired'],
     default: 'active'
+  },
+  tokens: {
+    type: Number,
+    default: 0
   },
   createdAt: {
     type: Date,

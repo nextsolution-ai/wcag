@@ -121,6 +121,10 @@
                 <div class="space-y-4">
                     <h3 class="text-xl font-medium text-gray-600">Create License</h3>
                     <div>
+                        <label for="licenseEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="licenseEmail" name="licenseEmail" aria-label="License email" placeholder="Enter email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
                         <label for="licenseDomains" class="block text-sm font-medium text-gray-700">Domains (comma-separated)</label>
                         <input type="text" id="licenseDomains" name="licenseDomains" aria-label="License domains" placeholder="domain1.com,domain2.com" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                     </div>
@@ -137,7 +141,7 @@
                     </button>
                     <div class="api-call">
                         <span class="method">POST</span> <span class="endpoint">/api/licenses</span>
-                        <div class="description">Create new license with optional initial tokens</div>
+                        <div class="description">Create new license with email, domains, expiration, and initial tokens</div>
                     </div>
                 </div>
 
@@ -359,10 +363,11 @@
         }
 
         async function createLicense() {
+            const email = document.getElementById('licenseEmail').value;
             const domains = document.getElementById('licenseDomains').value.split(',').map(d => d.trim());
             const expiresAt = document.getElementById('licenseExpiresAt').value;
             const tokens = parseInt(document.getElementById('licenseTokens').value) || 0;
-            await makeRequest(`${API_BASE_URL}/licenses`, 'POST', { domains, expiresAt, tokens });
+            await makeRequest(`${API_BASE_URL}/licenses`, 'POST', { email, domains, expiresAt, tokens });
         }
 
         async function verifyLicense() {

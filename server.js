@@ -1,57 +1,45 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const licenseRoutes = require('./server/src/routes/license');
+const authRoutes = require('./server/src/routes/auth');
 
-const server = http.createServer((req, res) => {
-    // Handle root path
-    let filePath = req.url === '/' ? './test.html' : '.' + req.url;
+const app = express();
 
-    // Get the file extension
-    const extname = path.extname(filePath);
-    let contentType = 'text/html';
-    
-    // Set content type based on file extension
-    switch (extname) {
-        case '.js':
-            contentType = 'text/javascript';
-            break;
-        case '.css':
-            contentType = 'text/css';
-            break;
-        case '.json':
-            contentType = 'application/json';
-            break;
-    }
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(express.static('.'));
 
-    // Read the file
-    fs.readFile(filePath, (error, content) => {
-        if (error) {
-            if(error.code === 'ENOENT') {
-                console.error(`File not found: ${filePath}`);
-                res.writeHead(404);
-                res.end('File not found');
-            } else {
-                console.error(`Server error: ${error.code}`);
-                res.writeHead(500);
-                res.end('Server Error: ' + error.code);
-            }
-        } else {
-            res.writeHead(200, { 'Content-Type': contentType });
-            res.end(content, 'utf-8');
-        }
-    });
+// API Routes
+app.use('/api/licenses', licenseRoutes);
+app.use('/api/auth', authRoutes);
+
+// Serve static files
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'test.html'));
 });
 
-// Error handling for the server
-server.on('error', (error) => {
-    if (error.code === 'EADDRINUSE') {
-        console.error('Port 3000 is already in use');
-    } else {
-        console.error('Server error:', error);
-    }
+// Error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({ error: 'Something went wrong!' });
 });
 
-const PORT = 3000;
-server.listen(PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}/`);
+// MongoDB connection string
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/wcag-project';
+
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('MongoDB connection error:', err));
+
+// Use environment variable for port or default to 3000
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
 }); 

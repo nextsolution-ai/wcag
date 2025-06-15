@@ -5,7 +5,6 @@ const cors = require('cors');
 const path = require('path');
 const authRoutes = require('./routes/auth');
 const licenseRoutes = require('./routes/license');
-const usageRoutes = require('./routes/usage');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -42,7 +41,6 @@ mongoose.connect(process.env.MONGODB_URL, {
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/licenses', licenseRoutes);
-app.use('/api/usage', usageRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
