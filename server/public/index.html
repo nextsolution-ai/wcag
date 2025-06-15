@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License Management Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .section {
+            transition: all 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .response-area {
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .loading-spinner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .api-call {
+            font-family: monospace;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.875rem;
+        }
+        .method {
+            color: #60a5fa;
+        }
+        .endpoint {
+            color: #34d399;
+        }
+        .description {
+            color: #9ca3af;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div id="loading" class="loading">
+        <div class="loading-spinner">
+            <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">License Management Dashboard</h1>
+        
+        <!-- Auth Section -->
+        <div class="section bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Authentication</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Login Form -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Login</h3>
+                    <div>
+                        <label for="loginEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="loginEmail" name="loginEmail" aria-label="Login email" placeholder="Enter your email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="loginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="loginPassword" name="loginPassword" aria-label="Login password" placeholder="Enter your password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="login()" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">
+                        Login
+                    </button>
+                    <div class="api-call">
+                        <span class="method">POST</span> <span class="endpoint">/api/auth/login</span>
+                        <div class="description">Authenticate user and get JWT token</div>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Register</h3>
+                    <div>
+                        <label for="registerEmail" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="registerEmail" name="registerEmail" aria-label="Register email" placeholder="Enter your email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="registerPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="registerPassword" name="registerPassword" aria-label="Register password" placeholder="Enter your password" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="register()" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+                        Register
+                    </button>
+                    <div class="api-call">
+                        <span class="method">POST</span> <span class="endpoint">/api/auth/register</span>
+                        <div class="description">Create new user account</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- License Section -->
+        <div class="section bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">License Management</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Create License -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Create License</h3>
+                    <div>
+                        <label for="licenseDomains" class="block text-sm font-medium text-gray-700">Domains (comma-separated)</label>
+                        <input type="text" id="licenseDomains" name="licenseDomains" aria-label="License domains" placeholder="domain1.com,domain2.com" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="licenseExpiresAt" class="block text-sm font-medium text-gray-700">Expires At</label>
+                        <input type="date" id="licenseExpiresAt" name="licenseExpiresAt" aria-label="License expiration" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="licenseTokens" class="block text-sm font-medium text-gray-700">Initial Tokens</label>
+                        <input type="number" id="licenseTokens" name="licenseTokens" aria-label="Initial tokens" placeholder="0" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="createLicense()" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">
+                        Create License
+                    </button>
+                    <div class="api-call">
+                        <span class="method">POST</span> <span class="endpoint">/api/licenses</span>
+                        <div class="description">Create new license with optional initial tokens</div>
+                    </div>
+                </div>
+
+                <!-- Verify License -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Verify License</h3>
+                    <div>
+                        <label for="verifyLicenseKey" class="block text-sm font-medium text-gray-700">License Key</label>
+                        <input type="text" id="verifyLicenseKey" name="verifyLicenseKey" aria-label="License key to verify" placeholder="Enter license key" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="verifyDomain" class="block text-sm font-medium text-gray-700">Domain</label>
+                        <input type="text" id="verifyDomain" name="verifyDomain" aria-label="Domain to verify" placeholder="Enter domain" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="verifyLicense()" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+                        Verify License
+                    </button>
+                    <div class="api-call">
+                        <span class="method">POST</span> <span class="endpoint">/api/licenses/verify</span>
+                        <div class="description">Verify license key and domain</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Token Management Section -->
+        <div class="section bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Token Management</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Add Tokens -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Add Tokens</h3>
+                    <div>
+                        <label for="addTokensLicenseKey" class="block text-sm font-medium text-gray-700">License Key</label>
+                        <input type="text" id="addTokensLicenseKey" name="addTokensLicenseKey" aria-label="License key for adding tokens" placeholder="Enter license key" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="addTokensAmount" class="block text-sm font-medium text-gray-700">Amount</label>
+                        <input type="number" id="addTokensAmount" name="addTokensAmount" aria-label="Amount of tokens to add" placeholder="Enter amount" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="addTokens()" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">
+                        Add Tokens
+                    </button>
+                    <div class="api-call">
+                        <span class="method">POST</span> <span class="endpoint">/api/licenses/:licenseKey/tokens</span>
+                        <div class="description">Add tokens to a license</div>
+                    </div>
+                </div>
+
+                <!-- Check Token Balance -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Check Balance</h3>
+                    <div>
+                        <label for="checkBalanceLicenseKey" class="block text-sm font-medium text-gray-700">License Key</label>
+                        <input type="text" id="checkBalanceLicenseKey" name="checkBalanceLicenseKey" aria-label="License key to check balance" placeholder="Enter license key" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="checkBalance()" class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+                        Check Balance
+                    </button>
+                    <div class="api-call">
+                        <span class="method">GET</span> <span class="endpoint">/api/licenses/:licenseKey/tokens</span>
+                        <div class="description">Get current token balance</div>
+                    </div>
+                </div>
+
+                <!-- Use Token -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Use Token</h3>
+                    <div>
+                        <label for="useTokenLicenseKey" class="block text-sm font-medium text-gray-700">License Key</label>
+                        <input type="text" id="useTokenLicenseKey" name="useTokenLicenseKey" aria-label="License key to use token" placeholder="Enter license key" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="useToken()" class="w-full bg-yellow-500 text-white py-2 px-4 rounded-md hover:bg-yellow-600 transition-colors">
+                        Use Token
+                    </button>
+                    <div class="api-call">
+                        <span class="method">POST</span> <span class="endpoint">/api/licenses/:licenseKey/use-token</span>
+                        <div class="description">Use one token from the license</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- License Management Section -->
+        <div class="section bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">License Management</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- List All Licenses -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">List All Licenses</h3>
+                    <button onclick="getAllLicenses()" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">
+                        Get All Licenses
+                    </button>
+                    <div class="api-call">
+                        <span class="method">GET</span> <span class="endpoint">/api/licenses/all</span>
+                        <div class="description">Get all licenses in the system</div>
+                    </div>
+                </div>
+
+                <!-- Delete License -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Delete License</h3>
+                    <div>
+                        <label for="deleteLicenseKey" class="block text-sm font-medium text-gray-700">License Key</label>
+                        <input type="text" id="deleteLicenseKey" name="deleteLicenseKey" aria-label="License key to delete" placeholder="Enter license key" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="deleteLicense()" class="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors">
+                        Delete License
+                    </button>
+                    <div class="api-call">
+                        <span class="method">DELETE</span> <span class="endpoint">/api/licenses/:licenseKey</span>
+                        <div class="description">Delete a license by its key</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Management Section -->
+        <div class="section bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">User Management</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- List All Users -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">List All Users</h3>
+                    <button onclick="getAllUsers()" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors">
+                        Get All Users
+                    </button>
+                    <div class="api-call">
+                        <span class="method">GET</span> <span class="endpoint">/api/auth/users</span>
+                        <div class="description">Get all users in the system</div>
+                    </div>
+                </div>
+
+                <!-- Delete User -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-medium text-gray-600">Delete User</h3>
+                    <div>
+                        <label for="deleteUserId" class="block text-sm font-medium text-gray-700">User ID</label>
+                        <input type="text" id="deleteUserId" name="deleteUserId" aria-label="User ID to delete" placeholder="Enter user ID" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <button onclick="deleteUser()" class="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 transition-colors">
+                        Delete User
+                    </button>
+                    <div class="api-call">
+                        <span class="method">DELETE</span> <span class="endpoint">/api/auth/users/:userId</span>
+                        <div class="description">Delete a user by their ID</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Response Section -->
+        <div class="section bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-700">Response</h2>
+            <pre id="response" class="bg-gray-100 p-4 rounded-md response-area"></pre>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:3000/api';
+        let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODQzMWM0ZTllODdkMWZhMTM0ZGViN2QiLCJpYXQiOjE3NDkyMjg2MjJ9.oSYfusZYLvEsdOhZ2N3863zaTQB1zN9yKKioJjbTeOk';
+        localStorage.setItem('token', token);
+
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
+
+        function showResponse(data) {
+            document.getElementById('response').textContent = JSON.stringify(data, null, 2);
+        }
+
+        async function makeRequest(url, method = 'GET', body = null) {
+            showLoading();
+            try {
+                const headers = {
+                    'Content-Type': 'application/json'
+                };
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
+
+                const response = await fetch(url, {
+                    method,
+                    headers,
+                    body: body ? JSON.stringify(body) : null
+                });
+
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.error || 'Something went wrong');
+                }
+                showResponse(data);
+                return data;
+            } catch (error) {
+                showResponse({ error: error.message });
+            } finally {
+                hideLoading();
+            }
+        }
+
+        async function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const data = await makeRequest(`${API_BASE_URL}/auth/login`, 'POST', { email, password });
+            if (data.token) {
+                token = data.token;
+                localStorage.setItem('token', token);
+            }
+        }
+
+        async function register() {
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            await makeRequest(`${API_BASE_URL}/auth/register`, 'POST', { email, password });
+        }
+
+        async function createLicense() {
+            const domains = document.getElementById('licenseDomains').value.split(',').map(d => d.trim());
+            const expiresAt = document.getElementById('licenseExpiresAt').value;
+            const tokens = parseInt(document.getElementById('licenseTokens').value) || 0;
+            await makeRequest(`${API_BASE_URL}/licenses`, 'POST', { domains, expiresAt, tokens });
+        }
+
+        async function verifyLicense() {
+            const licenseKey = document.getElementById('verifyLicenseKey').value;
+            const domain = document.getElementById('verifyDomain').value;
+            await makeRequest(`${API_BASE_URL}/licenses/verify`, 'POST', { licenseKey, domain });
+        }
+
+        async function addTokens() {
+            const licenseKey = document.getElementById('addTokensLicenseKey').value;
+            const tokens = parseInt(document.getElementById('addTokensAmount').value);
+            await makeRequest(`${API_BASE_URL}/licenses/${licenseKey}/tokens`, 'POST', { tokens });
+        }
+
+        async function checkBalance() {
+            const licenseKey = document.getElementById('checkBalanceLicenseKey').value;
+            await makeRequest(`${API_BASE_URL}/licenses/${licenseKey}/tokens`);
+        }
+
+        async function useToken() {
+            const licenseKey = document.getElementById('useTokenLicenseKey').value;
+            await makeRequest(`${API_BASE_URL}/licenses/${licenseKey}/use-token`, 'POST');
+        }
+
+        async function getAllLicenses() {
+            await makeRequest(`${API_BASE_URL}/licenses/all`);
+        }
+
+        async function deleteLicense() {
+            const licenseKey = document.getElementById('deleteLicenseKey').value;
+            await makeRequest(`${API_BASE_URL}/licenses/${licenseKey}`, 'DELETE');
+        }
+
+        async function getAllUsers() {
+            await makeRequest(`${API_BASE_URL}/auth/users`);
+        }
+
+        async function deleteUser() {
+            const userId = document.getElementById('deleteUserId').value;
+            await makeRequest(`${API_BASE_URL}/auth/users/${userId}`, 'DELETE');
+        }
+    </script>
+</body>
+</html> 

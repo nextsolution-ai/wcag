@@ -2,16 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const authRoutes = require('./routes/auth');
 const licenseRoutes = require('./routes/license');
 const usageRoutes = require('./routes/usage');
 
 const app = express();
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, '../public')));
 
 // Validate required environment variables
 const requiredEnvVars = ['MONGODB_URL', 'JWT_SECRET'];
@@ -43,6 +47,11 @@ app.use('/api/usage', usageRoutes);
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', mongodb: mongoose.connection.readyState === 1 });
+});
+
+// Serve index.html for all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // Error handling middleware

@@ -1,12 +1,55 @@
 export function setupEventListeners() {
     const btn = document.getElementById('accessibility-btn');
     const panel = document.getElementById('accessibility-panel');
+    const closeBtn = document.getElementById('daccheac');
+    const overlay = document.getElementById('accessibility-overlay');
     
     if (btn) {
         btn.addEventListener('click', () => {
+            const isOpen = panel.classList.contains('open');
+            if (isOpen) {
+                // Move focus to accessibility button before hiding panel
+                btn.focus();
+            }
             panel.classList.toggle('open');
-            panel.setAttribute('aria-hidden', !panel.classList.contains('open'));
-            btn.setAttribute('aria-expanded', panel.classList.contains('open'));
+            overlay.classList.toggle('open');
+            panel.setAttribute('aria-hidden', !isOpen);
+            btn.setAttribute('aria-expanded', !isOpen);
+            btn.setAttribute('aria-label', isOpen ? 'Open accessibility menu' : 'Close accessibility menu');
+            // Prevent body scroll when panel is open
+            document.body.style.overflow = isOpen ? '' : 'hidden';
+        });
+    }
+
+    // Close button functionality
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            const isOpen = panel.classList.contains('open');
+            if (isOpen) {
+                btn.focus();
+            }
+            panel.classList.remove('open');
+            overlay.classList.remove('open');
+            panel.setAttribute('aria-hidden', 'true');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Open accessibility menu');
+            document.body.style.overflow = '';
+        });
+    }
+
+    // Overlay click to close
+    if (overlay) {
+        overlay.addEventListener('click', () => {
+            const isOpen = panel.classList.contains('open');
+            if (isOpen) {
+                btn.focus();
+            }
+            panel.classList.remove('open');
+            overlay.classList.remove('open');
+            panel.setAttribute('aria-hidden', 'true');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Open accessibility menu');
+            document.body.style.overflow = '';
         });
     }
 
@@ -18,14 +61,16 @@ export function setupEventListeners() {
         }
     });
 
-    // Close panel when clicking outside
-    document.addEventListener('click', (e) => {
-        if (panel?.classList.contains('open') && 
-            !panel.contains(e.target) && 
-            !btn?.contains(e.target)) {
+    // Close panel on escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && panel?.classList.contains('open')) {
+            btn.focus();
             panel.classList.remove('open');
+            overlay.classList.remove('open');
             panel.setAttribute('aria-hidden', 'true');
-            btn?.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.setAttribute('aria-label', 'Open accessibility menu');
+            document.body.style.overflow = '';
         }
     });
 

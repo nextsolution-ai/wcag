@@ -12,13 +12,14 @@ function generateLicenseKey() {
 // Create new license
 router.post('/', auth, async (req, res) => {
   try {
-    const { domains, expiresAt } = req.body;
+    const { domains, expiresAt, tokens = 0 } = req.body;
     
     const license = new License({
       userId: req.user.userId,
       licenseKey: generateLicenseKey(),
       domains,
-      expiresAt: new Date(expiresAt)
+      expiresAt: new Date(expiresAt),
+      tokens
     });
 
     await license.save();
@@ -94,6 +95,83 @@ router.put('/:id', auth, async (req, res) => {
     res.json(license);
   } catch (error) {
     res.status(500).json({ error: 'Error updating license' });
+  }
+});
+
+// Add tokens to license
+router.post('/:licenseKey/tokens', auth, async (req, res) => {
+  try {
+    const { tokens } = req.body;
+    const license = await License.findOne({ licenseKey: req.params.licenseKey });
+
+    if (!license) {
+      return res.status(404).json({ error: 'License not found' });
+    }
+
+    license.tokens = (license.tokens || 0) + tokens;
+    await license.save();
+    res.json(license);
+  } catch (error) {
+    res.status(500).json({ error: 'Error adding tokens' });
+  }
+});
+
+// Get token balance
+router.get('/:licenseKey/tokens', auth, async (req, res) => {
+  try {
+    const license = await License.findOne({ licenseKey: req.params.licenseKey });
+
+    if (!license) {
+      return res.status(404).json({ error: 'License not found' });
+    }
+
+    res.json({ tokens: license.tokens || 0 });
+  } catch (error) {
+    res.status(500).json({ error: 'Error getting token balance' });
+  }
+});
+
+// Use token
+router.post('/:licenseKey/use-token', auth, async (req, res) => {
+  try {
+    const license = await License.findOne({ licenseKey: req.params.licenseKey });
+
+    if (!license) {
+      return res.status(404).json({ error: 'License not found' });
+    }
+
+    if (!license.tokens || license.tokens <= 0) {
+      return res.status(403).json({ error: 'No tokens available' });
+    }
+
+    license.tokens -= 1;
+    await license.save();
+    res.json({ tokens: license.tokens });
+  } catch (error) {
+    res.status(500).json({ error: 'Error using token' });
+  }
+});
+
+// Get all licenses (admin only)
+router.get('/all', auth, async (req, res) => {
+  try {
+    const licenses = await License.find();
+    res.json(licenses);
+  } catch (error) {
+    res.status(500).json({ error: 'Error fetching licenses' });
+  }
+});
+
+// Delete license
+router.delete('/:licenseKey', auth, async (req, res) => {
+  try {
+    const license = await License.findOneAndDelete({ licenseKey: req.params.licenseKey });
+    if (!license) {
+      return res.status(404).json({ error: 'License not found' });
+    }
+    res.json({ message: 'License deleted successfully' });
+  } catch (error) {
+    res.status(500).json({ error: 'Error deleting license' });
   }
 });
 
